@@ -28,8 +28,3 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home/coba', 'HomeController@download');
 	Route::get('/home/upload/{id}', 'HomeController@upload');
 });
-// Route::get('/got',[
-// 	'middleware' => ['auth'],
-// 	'uses' => function(){
-// 		echo "Anda diizinkan untuk melihat page ini";
-// 	}]);

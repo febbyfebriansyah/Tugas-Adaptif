@@ -69,6 +69,7 @@ class HomeController extends Controller
         return redirect('/home');
     }
 
+
     public function delete($id){
         Penduduk::destroy($id);
         flash('Penduduk berhasil dihapus')->success();

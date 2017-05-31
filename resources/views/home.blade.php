@@ -105,6 +105,17 @@
                                            class="btn btn-danger btn-sm btn-delete">Delete
                                         </a>
                                         <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
+                                        </a>
+                                        <button type="button" class="btn btn-default btn-sm btn-edit"
+                                                data-toggle="modal" penduduk="{{ $penduduk->id }}"
+                                                noKtp="{{ $penduduk->noKtp }}"
+                                                nama="{{ $penduduk->nama }}"
+                                                tglLahir="{{ $penduduk->tglLahir }}"
+                                                agama="{{ $penduduk->agama }}"
+                                                jk="{{ $penduduk->jk }}"
+                                                alamat="{{ $penduduk->alamat }}"
+                                                data-target="#modalView">View
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -232,6 +243,47 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal View Agenda-->
+<div class="modal fade" id="modalView" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit Penduduk</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" action="{{ url('/home/edit') }}" method="post">
+                    {{ csrf_field() }}
+                    <input id="penduduk_id" style="display: none" name="penduduk_id">
+
+                    <label>No. KTP</label>
+                    <input class="form-group form-control" id="noKtp" type="text" name="noKtp" readonly>
+
+                    <label>Nama</label>
+                    <input class="form-group form-control" id="nama" type="text" name="nama" readonly>
+
+                    <label>Tanggal Lahir</label>
+                    <input class="form-group form-control" id="tglLahir" type="text" name="tglLahir" readonly>
+
+                    <label>Jenis Kelamin</label>
+                    <input class="form-group form-control" id="selectTipe" name="jk" readonly>
+
+                    <label>Agama</label>
+                    <input class="form-group form-control" id="agama" type="text" name="agama" readonly>
+
+                    <label>Alamat</label>
+                    <textarea class="form-group form-control" id="alamat" rows="5" name="alamat" readonly></textarea>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Close</button>
                     </div>
                 </form>
             </div>
