@@ -15,7 +15,7 @@ class Penduduks extends Migration
     {
         Schema::create('penduduk', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('noKtp')->unique();
+            $table->string('noKtp')->unique();
             $table->string('nama');
 			$table->string('tmptLahir');
             $table->string('tglLahir');
@@ -24,6 +24,7 @@ class Penduduks extends Migration
             $table->string('alamat');
 			$table->string('noTelp');
             $table->string('file_url')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
