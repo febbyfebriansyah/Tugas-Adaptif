@@ -38,6 +38,7 @@ class PendudukSeed extends Seeder
         $penduduk->agama = "islam";
         $penduduk->alamat = "jl. Astana Anyar No.20";
         $penduduk->save();
+<<<<<<< HEAD
 
         $penduduk = new Penduduk();
         $penduduk->noKtp = 12;
@@ -245,5 +246,7 @@ class PendudukSeed extends Seeder
         $penduduk->agama = "islam";
         $penduduk->alamat = "jl. Astana Anyar No.20";
         $penduduk->save();
+=======
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
     }
 }

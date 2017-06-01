@@ -13,7 +13,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<<<<<<< HEAD
     <link href="{{ asset('js/datatables.min.css') }}" rel="stylesheet">
+=======
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 </head>
@@ -81,8 +84,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+<<<<<<< HEAD
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="{{ asset('js/datatables.min.js') }}"></script>
+=======
+    <script src="//code.jquery.com/jquery.js"></script>
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
     <script src="dist/sweetalert.min.js"></script>
     <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
     <script>$('div.alert').not('.alert-important').delay(3000).fadeOut(350);</script>

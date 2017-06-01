@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('js_addon')
+<<<<<<< HEAD
     <script>       
         $(document).ready(function() {
             $('#table-penduduk-sortable').DataTable({
                 "searching": false
             });
         } );
+=======
+    <script>
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
         $('.btn-edit').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             var noKtp = $(this).attr('noKtp');
@@ -69,7 +73,11 @@
                     </form>
                     <br>
                     <div class="table-responsive">
+<<<<<<< HEAD
                         <table id="table-penduduk-sortable" class="table table-hover table-sm">
+=======
+                        <table class="table table-hover table-sm">
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
                             <thead>
                                 <tr>    
                                     <th class="text-xs-center">#</th>
@@ -88,7 +96,15 @@
                             @foreach($penduduks as $penduduk)
                                 <tr>
                                     <td class="text-xs-center">{{ $skipped + $loop->iteration }}</td>
+<<<<<<< HEAD
                                     <td>{{ $penduduk->noKtp }}</td>
+=======
+                                    @if ($penduduk->noKtp != $penduduks->noKtp)
+                                        <td>{{ $penduduk->noKtp }}</td>
+                                    @else
+                                        <td>Nomor KTP sudah terdaftar</td>
+                                    @endif
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
                                     <td>{{ $penduduk->nama }}</td>
                                     <td>{{ $penduduk->tglLahir }}</td>
                                     <td>{{ $penduduk->getJK() }}</td>
@@ -162,7 +178,10 @@
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
+<<<<<<< HEAD
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+=======
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
                         </div>
                     </form>
                 </div>
