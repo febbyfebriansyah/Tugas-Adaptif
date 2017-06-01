@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Penduduk extends Model
 {
     protected $table = 'penduduk';
-    protected $fillable = ['noKtp','nama','tglLahir','jk','agama','alamat'];
+    protected $fillable = ['noKtp','nama','tglLahir','tmptLahir','jk','agama','alamat','noTelp'];
 
     // Method Accepted
     public function getJK(){
