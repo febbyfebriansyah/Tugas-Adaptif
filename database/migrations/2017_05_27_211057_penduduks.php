@@ -17,12 +17,12 @@ class Penduduks extends Migration
             $table->increments('id');
             $table->string('noKtp')->unique();
             $table->string('nama');
-			$table->string('tmptLahir');
+			$table->string('tmptLahir')->nullable();
             $table->string('tglLahir');
             $table->integer('jk'); //1=laki-laki, 2=perempuan
             $table->string('agama');
             $table->string('alamat');
-			$table->string('noTelp');
+			$table->string('noTelp')->nullable();
             $table->string('file_url')->nullable();
             $table->string('image_url')->nullable();
             $table->timestamps();

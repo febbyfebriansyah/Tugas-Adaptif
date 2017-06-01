@@ -40,4 +40,8 @@ class User extends Authenticatable
         $data = DB::table('penduduk')->where('noKtp','=',$this->noKtp)->first();
         return $data;
     }
+
+    public function getAktor(){
+        return "USER";
+    }
 }

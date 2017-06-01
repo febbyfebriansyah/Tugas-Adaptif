@@ -98,11 +98,12 @@
                             @foreach($penduduks as $penduduk)
                                 <tr>
                                     <td class="text-xs-center">{{ $skipped + $loop->iteration }}</td>
-                                    @if ($penduduk->noKtp != $penduduks->noKtp)
-                                        <td>{{ $penduduk->noKtp }}</td>
-                                    @else
-                                        <td>Nomor KTP sudah terdaftar</td>
-                                    @endif
+                                    {{--@if ($penduduk->noKtp != $penduduk->noKtp)--}}
+                                        {{--<td>{{ $penduduk->noKtp }}</td>--}}
+                                    {{--@else--}}
+                                        {{--<td>Nomor KTP sudah terdaftar</td>--}}
+                                    {{--@endif--}}
+                                    <td>{{ $penduduk->noKtp }}
                                     <td>{{ $penduduk->nama }}</td>
                                     <td>{{ $penduduk->tglLahir }}</td>
 									<td>{{ $penduduk->tmptLahir }}</td>
