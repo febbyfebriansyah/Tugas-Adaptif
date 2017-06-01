@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListController extends Controller
 {
@@ -20,7 +21,12 @@ class ListController extends Controller
          'Brienne of Tarth'   => 'Gwendoline Christie',
          'Lord Varys'         => 'Conleth Hill'
        ];
-
-       return view('welcome')->withCharacters($characters);
+        if(Auth::guard('admin')->check()){
+            return redirect('/admin');
+        }else if(Auth::guard('web')->check()){
+            return redirect('/user');
+        }else{
+            return view('welcome')->withCharacters($characters);
+        }
     }
 }

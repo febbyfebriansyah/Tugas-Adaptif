@@ -15,13 +15,14 @@ class Penduduks extends Migration
     {
         Schema::create('penduduk', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('noKtp')->unique();
+            $table->string('noKtp')->unique();
             $table->string('nama');
             $table->string('tglLahir');
             $table->integer('jk'); //1=laki-laki, 2=perempuan
             $table->string('agama');
             $table->string('alamat');
             $table->string('file_url')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

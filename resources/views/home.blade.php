@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('js_addon')
-<<<<<<< HEAD
     <script>       
         $(document).ready(function() {
             $('#table-penduduk-sortable').DataTable({
                 "searching": false
             });
         } );
-=======
-    <script>
->>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
+        $('.btn-upload').on('click', function(){
+            var penduduk_id = $(this).attr('penduduk');
+            $('input[id="penduduk_id"]').val(penduduk_id);
+        });
         $('.btn-edit').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             var noKtp = $(this).attr('noKtp');
@@ -73,11 +73,7 @@
                     </form>
                     <br>
                     <div class="table-responsive">
-<<<<<<< HEAD
                         <table id="table-penduduk-sortable" class="table table-hover table-sm">
-=======
-                        <table class="table table-hover table-sm">
->>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
                             <thead>
                                 <tr>    
                                     <th class="text-xs-center">#</th>
@@ -96,15 +92,11 @@
                             @foreach($penduduks as $penduduk)
                                 <tr>
                                     <td class="text-xs-center">{{ $skipped + $loop->iteration }}</td>
-<<<<<<< HEAD
-                                    <td>{{ $penduduk->noKtp }}</td>
-=======
                                     @if ($penduduk->noKtp != $penduduks->noKtp)
                                         <td>{{ $penduduk->noKtp }}</td>
                                     @else
                                         <td>Nomor KTP sudah terdaftar</td>
                                     @endif
->>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
                                     <td>{{ $penduduk->nama }}</td>
                                     <td>{{ $penduduk->tglLahir }}</td>
                                     <td>{{ $penduduk->getJK() }}</td>
@@ -125,7 +117,10 @@
                                         <a href="{{ url('/home/delete') }}/{{ $penduduk->id }}" url="{{ url('/home/delete') }}/{{ $penduduk->id }}"
                                            class="btn btn-danger btn-sm btn-delete">Delete
                                         </a>
-                                        <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
+                                        <!-- <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="button" class="btn btn-primary btn-sm">Upload</button> -->
+                                        <button type="button" class="btn btn-primary btn-sm btn-upload"
+                                                penduduk="{{ $penduduk->id }}" data-toggle="modal" data-target="#modalUpload">Upload
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -178,10 +173,7 @@
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
-<<<<<<< HEAD
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-=======
->>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
                         </div>
                     </form>
                 </div>
@@ -241,21 +233,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form class="form" action="{{ url('/home/upload') }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Upload Berkas</h4>
+                        <h4 class="modal-title" id="myModalLabel">Upload</h4>
                     </div>
+                    <input id="penduduk_id" style="display: none" name="penduduk_id">
                     <div class="modal-body">
-                        {{ csrf_field() }}
                         <div class="form-group">
                             <label>Upload File</label>
-                            <input type="file" class="form-control-file" name="file_url" required>
-                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx | *.jpg | *.png)</small>
+                            <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" class="form-control-file" name="file_url">
+                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx)</small>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label>Upload Image</label>
+                            <input type="file" accept=".jpg,.png,.bmp,.gif" class="form-control-file" name="image_url">
+                            <small class="form-text text-muted">Image (types : *.jpg | *.png |*.bmp | *.gif)</small>
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="cancel" class="btn btn-danger Close" data-dismiss="modal" aria-label="Close">Cancel</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
