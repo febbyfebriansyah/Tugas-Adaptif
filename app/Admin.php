@@ -5,13 +5,14 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
-use App\Penduduk;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = "users";
+    protected $guard = "admin";
+
+    protected $table = "admin";
     /**
      * The attributes that are mass assignable.
      *
@@ -29,15 +30,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function getData(){
-        // user -> no ktp this.noKtp
-        // pendukuk -> no ktp
-        // data = select * from penduduk where id = this.noKTP
-        // return data
-
-        // auth::getCurrentUser()->getData // penduuduk;
-        $data = DB::table('penduduk')->where('noKtp','=',$this->noKtp)->first();
-        return $data;
-    }
 }

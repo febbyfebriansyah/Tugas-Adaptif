@@ -2,6 +2,10 @@
 
 @section('js_addon')
     <script>
+        $('.btn-upload').on('click', function(){
+            var penduduk_id = $(this).attr('penduduk');
+            $('input[id="penduduk_id"]').val(penduduk_id);
+        });
         $('.btn-edit').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             var noKtp = $(this).attr('noKtp');
@@ -104,7 +108,10 @@
                                         <a href="{{ url('/home/delete') }}/{{ $penduduk->id }}" url="{{ url('/home/delete') }}/{{ $penduduk->id }}"
                                            class="btn btn-danger btn-sm btn-delete">Delete
                                         </a>
-                                        <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
+                                        <!-- <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="button" class="btn btn-primary btn-sm">Upload</button> -->
+                                        <button type="button" class="btn btn-primary btn-sm btn-upload"
+                                                penduduk="{{ $penduduk->id }}" data-toggle="modal" data-target="#modalUpload">Upload
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -216,21 +223,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form class="form" action="{{ url('/home/upload') }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Upload Berkas</h4>
+                        <h4 class="modal-title" id="myModalLabel">Upload</h4>
                     </div>
+                    <input id="penduduk_id" style="display: none" name="penduduk_id">
                     <div class="modal-body">
-                        {{ csrf_field() }}
                         <div class="form-group">
                             <label>Upload File</label>
-                            <input type="file" class="form-control-file" name="file_url" required>
-                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx | *.jpg | *.png)</small>
+                            <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" class="form-control-file" name="file_url">
+                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx)</small>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label>Upload Image</label>
+                            <input type="file" accept=".jpg,.png,.bmp,.gif" class="form-control-file" name="image_url">
+                            <small class="form-text text-muted">Image (types : *.jpg | *.png |*.bmp | *.gif)</small>
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="cancel" class="btn btn-danger Close" data-dismiss="modal" aria-label="Close">Cancel</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

@@ -13,7 +13,7 @@ class PendudukSeed extends Seeder
     public function run()
     {
         $penduduk = new Penduduk();
-        $penduduk->noKtp = 1237687314692234;
+        $penduduk->noKtp = "1237687314692234";
         $penduduk->nama = "Febby Febriansyah";
         $penduduk->tglLahir = "17-02-1996";
         $penduduk->jk = 1;
@@ -22,7 +22,7 @@ class PendudukSeed extends Seeder
         $penduduk->save();
 
         $penduduk = new Penduduk();
-        $penduduk->noKtp = 1308304328420859;
+        $penduduk->noKtp = "1308304328420859";
         $penduduk->nama = "Agnes Monica";
         $penduduk->tglLahir = "20-04-1986";
         $penduduk->jk = 2;
@@ -31,7 +31,7 @@ class PendudukSeed extends Seeder
         $penduduk->save();
 
         $penduduk = new Penduduk();
-        $penduduk->noKtp = 3019847323109487;
+        $penduduk->noKtp = "3019847323109487";
         $penduduk->nama = "Andhika Gilang";
         $penduduk->tglLahir = "12-02-1996";
         $penduduk->jk = 1;

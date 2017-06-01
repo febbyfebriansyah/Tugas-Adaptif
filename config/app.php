@@ -180,6 +180,7 @@ return [
         //Something new
         Laracasts\Flash\FlashServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        'Collective\Html\HtmlServiceProvider',
 
     ],
 
@@ -231,6 +232,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+
+        //something new
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
 
     ],
 
