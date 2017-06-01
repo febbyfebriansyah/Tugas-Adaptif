@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('js_addon')
-    <script>
+    <script>       
+        $(document).ready(function() {
+            $('#table-penduduk-sortable').DataTable({
+                "searching": false
+            });
+        } );
         $('.btn-edit').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             var noKtp = $(this).attr('noKtp');
@@ -64,7 +69,7 @@
                     </form>
                     <br>
                     <div class="table-responsive">
-                        <table class="table table-hover table-sm">
+                        <table id="table-penduduk-sortable" class="table table-hover table-sm">
                             <thead>
                                 <tr>    
                                     <th class="text-xs-center">#</th>
@@ -157,6 +162,7 @@
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
