@@ -10,3 +10,5 @@ Homestead.yaml
 npm-debug.log
 .env
 README.md
+README.md
+routes/web.php

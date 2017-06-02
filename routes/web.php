@@ -27,4 +27,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home/delete/{id}', 'HomeController@delete');
 	Route::get('/home/coba', 'HomeController@download');
 	Route::get('/home/upload/{id}', 'HomeController@upload');
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 7d27c98e7c03d349487d5ff0976548ce9f351fcd
