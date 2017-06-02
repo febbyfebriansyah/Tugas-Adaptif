@@ -1,23 +1,39 @@
 @extends('layouts.app')
 
 @section('js_addon')
-    <script>
+    <script>       
+        $(document).ready(function() {
+            $('#table-penduduk-sortable').DataTable({
+                "searching": false
+            });
+        } );
+<<<<<<< HEAD
+=======
+        $('.btn-upload').on('click', function(){
+            var penduduk_id = $(this).attr('penduduk');
+            $('input[id="penduduk_id"]').val(penduduk_id);
+        });
+>>>>>>> eb7d231919e882e2933584e6433cd131bb20f6c8
         $('.btn-edit').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             var noKtp = $(this).attr('noKtp');
             var nama = $(this).attr('nama');
             var tglLahir = $(this).attr('tglLahir');
+			var tmptLahir = $(this).attr('tmptLahir');
             var selectTipe = $(this).attr('jk');
             var agama = $(this).attr('agama');
             var alamat = $(this).attr('alamat');
+			var noTelp = $(this).attr('noTelp');
 
             $('input[id="penduduk_id"]').val(penduduk_id);
             $('input[id="noKtp"]').val(noKtp);
             $('input[id="nama"]').val(nama);
+			$('input[id="tmptLahir"]').val(tmptLahir);
             $('input[id="tglLahir"]').val(tglLahir);
             $('select[id="selectTipe"]').val(selectTipe);
             $('input[id="agama"]').val(agama);
             $('textarea[id="alamat"]').val(alamat);
+			$('input[id="noTelp"]').val(noTelp);
 
         });
         $('.btn-delete').on('click', function () {
@@ -64,16 +80,18 @@
                     </form>
                     <br>
                     <div class="table-responsive">
-                        <table class="table table-hover table-sm">
+                        <table id="table-penduduk-sortable" class="table table-hover table-sm">
                             <thead>
                                 <tr>    
                                     <th class="text-xs-center">#</th>
                                     <th>No. KTP</th>
                                     <th>Nama</th>
                                     <th>Tanggal Lahir</th>
+									<th>Tempat Lahir</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Agama</th>
                                     <th>Alamat</th>
+									<th>No. Telpon</th>
                                     <th style="text-align: center">Action</th>
                                 </tr>
                             </thead>
@@ -83,16 +101,19 @@
                             @foreach($penduduks as $penduduk)
                                 <tr>
                                     <td class="text-xs-center">{{ $skipped + $loop->iteration }}</td>
-                                    @if ($penduduk->noKtp != $penduduks->noKtp)
-                                        <td>{{ $penduduk->noKtp }}</td>
-                                    @else
-                                        <td>Nomor KTP sudah terdaftar</td>
-                                    @endif
+                                    {{--@if ($penduduk->noKtp != $penduduk->noKtp)--}}
+                                        {{--<td>{{ $penduduk->noKtp }}</td>--}}
+                                    {{--@else--}}
+                                        {{--<td>Nomor KTP sudah terdaftar</td>--}}
+                                    {{--@endif--}}
+                                    <td>{{ $penduduk->noKtp }}
                                     <td>{{ $penduduk->nama }}</td>
                                     <td>{{ $penduduk->tglLahir }}</td>
+									<td>{{ $penduduk->tmptLahir }}</td>
                                     <td>{{ $penduduk->getJK() }}</td>
                                     <td>{{ $penduduk->agama }}</td>
                                     <td>{{ $penduduk->alamat }}</td>
+									<td>{{ $penduduk->noTelp }}</td>
 
                                     <td th style="text-align: center">
                                         <button type="button" class="btn btn-info btn-sm btn-edit"
@@ -100,14 +121,17 @@
                                                 noKtp="{{ $penduduk->noKtp }}"
                                                 nama="{{ $penduduk->nama }}"
                                                 tglLahir="{{ $penduduk->tglLahir }}"
+												tmptLahir="{{ $penduduk->tmptLahir }}"
                                                 agama="{{ $penduduk->agama }}"
                                                 jk="{{ $penduduk->jk }}"
                                                 alamat="{{ $penduduk->alamat }}"
+												noTelp="{{ $penduduk->noTelp }}"
                                                 data-target="#modalEdit">Edit
                                         </button>
                                         <a href="{{ url('/home/delete') }}/{{ $penduduk->id }}" url="{{ url('/home/delete') }}/{{ $penduduk->id }}"
                                            class="btn btn-danger btn-sm btn-delete">Delete
                                         </a>
+<<<<<<< HEAD
                                         <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
                                         </a>
                                         <button type="button" class="btn btn-default btn-sm btn-edit"
@@ -119,6 +143,11 @@
                                                 jk="{{ $penduduk->jk }}"
                                                 alamat="{{ $penduduk->alamat }}"
                                                 data-target="#modalView">View
+=======
+                                        <!-- <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="button" class="btn btn-primary btn-sm">Upload</button> -->
+                                        <button type="button" class="btn btn-primary btn-sm btn-upload"
+                                                penduduk="{{ $penduduk->id }}" data-toggle="modal" data-target="#modalUpload">Upload
+>>>>>>> d0e1c54fca64b2f9e7fa7f6ba67d78a996967edf
                                         </button>
                                     </td>
                                 </tr>
@@ -155,6 +184,8 @@
 
                         <label>Tanggal Lahir</label>
                         <input class="form-group form-control" type="text" name="tglLahir" required>
+						<label>Tempat Lahir</label>
+                        <input class="form-group form-control" type="text" name="tmptLahir" required>
 
                         <label>Jenis Kelamin</label>
                         <div class="form-group">
@@ -169,9 +200,12 @@
 
                         <label>Alamat</label>
                         <textarea class="form-group form-control" rows="5" name="alamat" required></textarea>
+						<label>No. Telpon</label>
+                        <input class="form-group form-control" type="text" name="noTelp" required>
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
@@ -203,6 +237,9 @@
                         <label>Tanggal Lahir</label>
                         <input class="form-group form-control" id="tglLahir" type="text" name="tglLahir" required>
 
+						<label>Tempat Lahir</label>
+                        <input class="form-group form-control" id="tmptLahir" type="text" name="tmptLahir" required>
+
                         <label>Jenis Kelamin</label>
                         <div class="form-group">
                             <select class="form-control" id="selectTipe" name="jk">
@@ -216,6 +253,9 @@
 
                         <label>Alamat</label>
                         <textarea class="form-group form-control" id="alamat" rows="5" name="alamat" required></textarea>
+
+						<label>No. Telpon</label>
+                        <input class="form-group form-control" id="noTelp" type="text" name="noTelp" required>
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Edit</button>
@@ -231,21 +271,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form class="form" action="{{ url('/home/upload') }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Upload Berkas</h4>
+                        <h4 class="modal-title" id="myModalLabel">Upload</h4>
                     </div>
+                    <input id="penduduk_id" style="display: none" name="penduduk_id">
                     <div class="modal-body">
-                        {{ csrf_field() }}
                         <div class="form-group">
                             <label>Upload File</label>
-                            <input type="file" class="form-control-file" name="file_url" required>
-                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx | *.jpg | *.png)</small>
+                            <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" class="form-control-file" name="file_url">
+                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx)</small>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label>Upload Image</label>
+                            <input type="file" accept=".jpg,.png,.bmp,.gif" class="form-control-file" name="image_url">
+                            <small class="form-text text-muted">Image (types : *.jpg | *.png |*.bmp | *.gif)</small>
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="cancel" class="btn btn-danger Close" data-dismiss="modal" aria-label="Close">Cancel</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

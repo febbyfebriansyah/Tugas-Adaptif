@@ -7,9 +7,22 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('register') }}">
                         {{ csrf_field() }}
 
+                        <div class="form-group{{ $errors->has('noKtp') ? ' has-error' : '' }}">
+                            <label for="noKtp" class="col-md-4 control-label">No. Ktp</label>
+
+                            <div class="col-md-6">
+                                <input id="noKtp" type="text" class="form-control" name="noKtp" value="{{ old('noKtp') }}" required autofocus>
+
+                                @if ($errors->has('noKtp'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('noKtp') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -37,24 +50,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                            <label for="status" class="col-md-4 control-label">User</label>
-
-                            <div class="col-md-6">
-                                <select name="status" class="form-control" required>
-                                    <option selected="selected" disabled>Please select role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="penduduk">Penduduk</option>
-                                </select>
-                                @if ($errors->has('status'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('status') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
