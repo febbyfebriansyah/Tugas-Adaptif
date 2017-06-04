@@ -13,10 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
-=======
->>>>>>> eb7d231919e882e2933584e6433cd131bb20f6c8
     <link href="{{ asset('js/datatables.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">

@@ -46,7 +46,7 @@ class HomeController extends Controller
         $penduduk->save();
 
         flash('Penduduk berhasil ditambahkan')->success();
-        return redirect('/home');
+        return redirect('/admin');
     }
 
     public function edit(Request $request){
@@ -73,13 +73,13 @@ class HomeController extends Controller
 
         // return response()->json($request);
         flash('Penduduk berhasil di update')->success();
-        return redirect('/home');
+        return redirect('/admin');
     }
 
     public function delete($id){
         Penduduk::destroy($id);
         flash('Penduduk berhasil dihapus')->success();
-        return redirect('/home');
+        return redirect('/admin');
     }
 
     public function download(){
@@ -120,7 +120,7 @@ class HomeController extends Controller
         $penduduk->save();
 
         flash('Upload Berhasil')->success();
-        return redirect('/home');
+        return redirect('/admin');
     }
 
     public function postImage(Request $request){

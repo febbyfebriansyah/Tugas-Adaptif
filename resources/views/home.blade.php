@@ -7,13 +7,10 @@
                 "searching": false
             });
         } );
-<<<<<<< HEAD
-=======
         $('.btn-upload').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             $('input[id="penduduk_id"]').val(penduduk_id);
         });
->>>>>>> eb7d231919e882e2933584e6433cd131bb20f6c8
         $('.btn-edit').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             var noKtp = $(this).attr('noKtp');
@@ -128,10 +125,10 @@
 												noTelp="{{ $penduduk->noTelp }}"
                                                 data-target="#modalEdit">Edit
                                         </button>
-                                        <a href="{{ url('/home/delete') }}/{{ $penduduk->id }}" url="{{ url('/home/delete') }}/{{ $penduduk->id }}"
+                                        <a href="{{ url('/admin/home/delete') }}/{{ $penduduk->id }}" url="{{ url('/admin/home/delete') }}/{{ $penduduk->id }}"
                                            class="btn btn-danger btn-sm btn-delete">Delete
                                         </a>
-                                        <!-- <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="button" class="btn btn-primary btn-sm">Upload</button> -->
+                                        <!-- <a href="{{ url('admin/home/upload') }}/{{ $penduduk->id }}" type="button" class="btn btn-primary btn-sm">Upload</button> -->
                                         <button type="button" class="btn btn-primary btn-sm btn-upload"
                                                 penduduk="{{ $penduduk->id }}" data-toggle="modal" data-target="#modalUpload">Upload
                                         </button>
@@ -159,7 +156,7 @@
                     <h4 class="modal-title" id="modalAddLabel">Tambah Penduduk</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" action="{{ url('/home/create') }}" method="post">
+                    <form class="form" action="{{ url('/admin/home/create') }}" method="post">
                         {{ csrf_field() }}
 
                         <label>No. KTP</label>
@@ -190,8 +187,8 @@
                         <input class="form-group form-control" type="text" name="noTelp" required>
 
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
@@ -210,7 +207,7 @@
                     <h4 class="modal-title">Edit Penduduk</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" action="{{ url('/home/edit') }}" method="post">
+                    <form class="form" action="{{ url('/admin/home/edit') }}" method="post">
                         {{ csrf_field() }}
                         <input id="penduduk_id" style="display: none" name="penduduk_id">
 
@@ -244,6 +241,7 @@
                         <input class="form-group form-control" id="noTelp" type="text" name="noTelp" required>
 
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </div>
                     </form>
@@ -256,7 +254,7 @@
     <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form class="form" action="{{ url('/home/upload') }}" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{ url('/admin/home/upload') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
