@@ -9,6 +9,11 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+<<<<<<< HEAD
+README.md
+README.md
+routes/web.php
+=======
 vendor/
 node_modules/
 npm-debug.log
@@ -29,3 +34,4 @@ Homestead.json
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+>>>>>>> d0e1c54fca64b2f9e7fa7f6ba67d78a996967edf
