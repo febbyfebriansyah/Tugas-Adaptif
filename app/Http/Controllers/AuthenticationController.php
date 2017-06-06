@@ -49,7 +49,7 @@ class AuthenticationController extends Controller
 			return redirect('/user');
 		}else{
 			$user = new User();
-			$user->id = $request->input('noKtp');
+			$user->noKtp = $request->input('noKtp');
 			$user->name = $request->input('name');
 			$user->email = $request->input('email');
 			$user->password = Hash::make($request->input('password'));

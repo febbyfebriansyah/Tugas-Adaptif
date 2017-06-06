@@ -154,7 +154,7 @@ class PendudukSeed extends Seeder
         $penduduk->save();       
 
         $penduduk = new Penduduk();
-        $penduduk->noKtp = 14;
+        $penduduk->noKtp = 14999;
         $penduduk->nama = "12 Gilang";
         $penduduk->tglLahir = "12-02-1996";
         $penduduk->jk = 1;
@@ -217,7 +217,7 @@ class PendudukSeed extends Seeder
         $penduduk->save();
 
         $penduduk = new Penduduk();
-        $penduduk->noKtp = 12;
+        $penduduk->noKtp = 1255;
         $penduduk->nama = "12 Gilang";
         $penduduk->tglLahir = "12-02-1996";
         $penduduk->jk = 1;
