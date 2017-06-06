@@ -11,10 +11,11 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $admin = new App\Admin();
+        $admin = new App\User();
         $admin->name = 'admin';
         $admin->email = 'admin@gmail.com';
-        $admin->password = Hash::make('qwerty123');
+        $admin->password = Hash::make('asdf');
+        $admin->privilege = 99;
         $admin->save();
     }
 }

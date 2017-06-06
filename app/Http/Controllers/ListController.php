@@ -21,10 +21,8 @@ class ListController extends Controller
          'Brienne of Tarth'   => 'Gwendoline Christie',
          'Lord Varys'         => 'Conleth Hill'
        ];
-        if(Auth::guard('admin')->check()){
-            return redirect('/admin');
-        }else if(Auth::guard('web')->check()){
-            return redirect('/user');
+        if(Auth::guard('web')->check()){
+            return redirect('/home');
         }else{
             return view('welcome')->withCharacters($characters);
         }

@@ -26,9 +26,14 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $user = Auth::guard('web')->user()->getData();
-        return view('user-view',['user' => $user]);
+        return view('user-view');
 //        return response()->json($user);
+    }
+    
+    public function showProfil(Request $request){
+        //$user = Penduduk::where('nama','like',Auth::user()->name);
+        $user = Auth::user()->getData();
+        return view('profil', ['user' => $user]);
     }
     
     public function getProfil(){

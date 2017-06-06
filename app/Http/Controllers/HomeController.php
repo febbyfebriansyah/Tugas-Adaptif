@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth');
     }
 
     /**
@@ -30,7 +30,7 @@ class HomeController extends Controller
         $penduduks = Penduduk::where('noKtp','=',$search)
                         ->orWhere('nama','like','%'.$search.'%')
                         ->paginate(10);
-        return view('home',['penduduks' => $penduduks, 'search' => $search]);
+        return view('user-view',['penduduks' => $penduduks, 'search' => $search]);
     }
 
     public function create(Request $request){
