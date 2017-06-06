@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return view('user-view');
+        return view('home');
 //        return response()->json($user);
     }
     
