@@ -46,7 +46,7 @@ class AuthenticationController extends Controller
 			$user->password = Hash::make($request->input('password'));
 			$user->save();
 
-			return redirect('/');
+			return redirect('/login');
 		}
 	}
 
