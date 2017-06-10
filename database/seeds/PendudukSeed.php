@@ -13,6 +13,17 @@ class PendudukSeed extends Seeder
     public function run()
     {
         $penduduk = new Penduduk();
+        $penduduk->noKtp = "99";
+        $penduduk->nama = "Admin Admin";
+        $penduduk->tglLahir = "01-01-1970";
+		$penduduk->tmptLahir = "Bandung";
+        $penduduk->jk = 1;
+        $penduduk->agama = "Admin";
+        $penduduk->alamat = "Jl. Taman Sari No.55, Lb. Siliwangi, Coblong, Kota Bandung, Jawa Barat 40132, Indonesia";
+		$penduduk->noTelp = "0222502898";
+        $penduduk->save();
+        
+        $penduduk = new Penduduk();
         $penduduk->noKtp = "1237687314692234";
         $penduduk->nama = "Febby Febriansyah";
         $penduduk->tglLahir = "17-02-1996";
@@ -51,7 +62,7 @@ class PendudukSeed extends Seeder
         $penduduk->tglLahir = "12-02-1992";
         $penduduk->tmptLahir = "Bogor";
         $penduduk->jk = 1;
-        $penduduk->agama = "islam";
+        $penduduk->agama = "Kristen";
         $penduduk->alamat = "jl. Puncak No.92";
         $penduduk->noTelp = "081829382343";
         $penduduk->save();

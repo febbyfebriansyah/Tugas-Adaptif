@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth');
     }
 
     /**
@@ -46,7 +46,7 @@ class HomeController extends Controller
         $penduduk->save();
 
         flash('Penduduk berhasil ditambahkan')->success();
-        return redirect('/admin');
+        return redirect('/');
     }
 
     public function edit(Request $request){
@@ -73,14 +73,14 @@ class HomeController extends Controller
 
         // return response()->json($request);
         flash('Penduduk berhasil di update')->success();
-        return redirect('/admin');
+        return redirect('/');
     }
 
 
     public function delete($id){
         Penduduk::destroy($id);
         flash('Penduduk berhasil dihapus')->success();
-        return redirect('/admin');
+        return redirect('/');
     }
 
     public function download(){
@@ -121,7 +121,7 @@ class HomeController extends Controller
         $penduduk->save();
 
         flash('Upload Berhasil')->success();
-        return redirect('/admin');
+        return redirect('/');
     }
 
     public function postImage(Request $request){

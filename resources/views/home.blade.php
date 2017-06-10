@@ -4,7 +4,8 @@
     <script>       
         $(document).ready(function() {
             $('#table-penduduk-sortable').DataTable({
-                "searching": false
+                "searching": false,
+                "bPaginate": false
             });
         } );
         $('.btn-upload').on('click', function(){
@@ -54,6 +55,9 @@
 <div class="container">
     @include('flash::message')
     @include('sweet::alert')
+    @if(Auth::user()->privilege != 99)
+        {{ "ANDA BUKAN ADMIN" }}
+    @elseif(Auth::user()->privilege == 99)
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -85,7 +89,7 @@
                                     <th>Nama</th>
                                     <th>Tanggal Lahir</th>
 									<th>Tempat Lahir</th>
-                                    <th>Jenis Kelamin</th>
+                                    <th>Jenis AKelamin</th>
                                     <th>Agama</th>
                                     <th>Alamat</th>
 									<th>No. Telpon</th>
@@ -125,11 +129,9 @@
 												noTelp="{{ $penduduk->noTelp }}"
                                                 data-target="#modalEdit">Edit
                                         </button>
-                                        <a href="{{ url('/admin/home/delete') }}/{{ $penduduk->id }}" url="{{ url('/admin/home/delete') }}/{{ $penduduk->id }}"
+                                        <button url="{{ url('/home/delete') }}/{{ $penduduk->id }}"
                                            class="btn btn-danger btn-sm btn-delete">Delete
-                                        </a>
-                                        <a href="{{ url('/admin/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
-                                        </a>
+                                        </button>
                                         <button type="button" class="btn btn-default btn-sm btn-edit"
                                                 data-toggle="modal" penduduk="{{ $penduduk->id }}"
                                                 noKtp="{{ $penduduk->noKtp }}"
@@ -336,4 +338,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection

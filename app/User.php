@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'status', 'password',
+        'name', 'email', 'status', 'password', 'privilege',
     ];
 
     /**
@@ -41,7 +41,15 @@ class User extends Authenticatable
         return $data;
     }
 
+    public function isAdmin() {
+        if($this->privilege == 99) return 1;
+        else return 0;
+    }
+    
     public function getAktor(){
-        return "USER";
+        if($this->privilege == 99) {
+            return "ADMIN";
+        }
+        else return "USER";
     }
 }
