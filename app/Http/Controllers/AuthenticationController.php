@@ -54,4 +54,21 @@ class AuthenticationController extends Controller
 		Auth::guard('web')->logout();
 		return redirect('/');
 	}
+
+    public function getActivation(){
+        if(Auth::guard('web')->check()){
+            return view('/');
+        }else{
+            return view('auth.account_activation');
+        }
+    }
+
+    public function postActivation(Request $request){
+        if(Auth::guard('web')->attempt(['noKtp' => $request['noKtp'], 'email' => $request['email']])){
+            return redirect('/account_activation');
+        } else {
+            flash("email atau nip yang diinputkan salah")->error();
+            return redirect('/account_activation');
+        }
+    }
 }

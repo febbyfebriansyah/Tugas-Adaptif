@@ -26,7 +26,7 @@
 
             </div>
             @if(Auth::guest())
-              <a href="/login" class="btn btn-info"> Anda perlu login terlebih dahulu untuk melihatnya 😜😜 >></a>
+              <a href="/login" class="btn btn-info"> Silahkan login terlebih dahulu untuk memakai aplikasi</a>
             @endif
         </div>
     </div>

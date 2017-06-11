@@ -24,6 +24,8 @@ Route::post('/login', 'AuthenticationController@submitLogin');
 Route::get('/register', 'AuthenticationController@getregister');
 Route::post('/register', 'AuthenticationController@register');
 Route::get('/logout', 'AuthenticationController@logout');
+Route::get('/account_activation', 'AuthenticationController@getActivation');
+Route::post('/account_activation', 'AuthenticationController@postActivation');
 
 /*Route::group(['prefix' => 'admin' , 'middleware' => 'auth.admin'], function(){
 	Route::get('/', 'HomeController@index');
