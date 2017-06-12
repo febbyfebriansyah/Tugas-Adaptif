@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         @include('flash::message')
-        @include('sweet::alert')
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
