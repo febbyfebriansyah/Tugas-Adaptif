@@ -1,47 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading"><center>SET PASSWORD</center></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/new_password') }}">
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('noKtp') ? ' has-error' : '' }}">
-                            <label for="noKtp" class="col-md-4 control-label">No. Ktp</label>
-
-                            <div class="col-md-6">
-                                <input id="noKtp" type="text" class="form-control" placeholder="Enter your id card" name="noKtp" value="{{ old('noKtp') }}" required autofocus>
-
-                                @if ($errors->has('noKtp'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('noKtp') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" placeholder="Enter your name" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" placeholder="Enter your email" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" placeholder="Enter your email address" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -50,6 +21,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -73,10 +45,10 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
+                            <div class="col-md-8 col-md-offset-4">
+                                <button style="height:35px;width:150px" type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
                             </div>
                         </div>
                     </form>
@@ -84,5 +56,7 @@
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+    </div>
+    </div>
 @endsection

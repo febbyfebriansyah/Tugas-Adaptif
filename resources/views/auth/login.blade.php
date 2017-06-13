@@ -13,7 +13,7 @@
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">E-MAIL ADDRESS</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                                <input id="email" type="email" class="form-control" placeholder="Enter your email here" name="email" value="" required autofocus>
 
 <!--                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -27,7 +27,7 @@
                             <label for="password" class="col-md-4 control-label">PASSWORD</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" placeholder="Enter password" name="password" required>
 
 <!--                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -42,7 +42,7 @@
                                 <button style="height:35px;width:150px" type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-                                <a class="btn btn-link" href="">
+                                <a class="btn btn-link" href="/forget_password">
                                     Forgot Your Password?
                                 </a>
                                 <div class="checkbox">

@@ -71,4 +71,54 @@ class AuthenticationController extends Controller
             return redirect('/account_activation');
         }
     }
+
+    public function getForgetPassword(){
+        if(Auth::guard('web')->check()){
+            return redirect('/login');
+        } else {
+            return view('auth.passwords.forget_password');
+        }
+    }
+
+    public function getForgetPassword2(){
+        if(Auth::guard('web')->check()){
+            return redirect('/login');
+        } else {
+            return view('auth.passwords.forget_password2');
+        }
+    }
+
+    public function postForgetPassword(Request $request){
+        if(Auth::guard('web')->attempt(['email' => $request['email']])){
+            return redirect('/login');
+        } else {
+            flash('silahkan cek e-mail anda')->success();
+            return view('auth.passwords.forget_password');
+        }
+    }
+
+    public function postForgetPassword2(){
+        if(Auth::guard('web')->check()){
+            return redirect('/login');
+        } else {
+            return view('auth.passwords.new_password');
+        }
+    }
+
+    /**
+     * belum selesai
+     */
+    public function postNewPassword(Request $request){
+        if(Auth::guard('web')->check()){
+            return redirect('/login');
+        }else{
+            //$search = $request->input('search');
+            //$penduduks = Penduduk::where('email','=',$search)
+            //$search->password = Hash::make($request->input('password'));
+            //$search->save();
+            flash('password berhasil diganti')->success();
+            flash('maaf, password tidak cocok')->error();
+            return view('auth.passwords.new_password');
+        }
+    }
 }
