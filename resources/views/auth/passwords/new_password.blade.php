@@ -1,20 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">ADMIN LOGIN</div>
+                <div class="panel-heading"><center>SET PASSWORD</center></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.login.submit') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/new_password') }}">
                         {{ csrf_field() }}
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control" placeholder="Enter your email address" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -28,7 +26,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" placeholder="Enter password" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -39,24 +37,18 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" placeholder="Reenter password" name="password_confirmation" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+                                <button style="height:35px;width:150px" type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
                             </div>
                         </div>
                     </form>
@@ -64,5 +56,7 @@
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+    </div>
+    </div>
 @endsection

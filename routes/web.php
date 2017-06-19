@@ -24,6 +24,14 @@ Route::post('/login', 'AuthenticationController@submitLogin');
 Route::get('/register', 'AuthenticationController@getregister');
 Route::post('/register', 'AuthenticationController@register');
 Route::get('/logout', 'AuthenticationController@logout');
+Route::get('/account_activation', 'AuthenticationController@getActivation');
+Route::post('/account_activation', 'AuthenticationController@postActivation');
+Route::get('/forget_password', 'AuthenticationController@getForgetPassword');
+Route::get('/forget_password2', 'AuthenticationController@getForgetPassword2');
+Route::post('/forget_password', 'AuthenticationController@postForgetPassword');
+Route::post('/forget_password2', 'AuthenticationController@postForgetPassword2');
+Route::get('/new_password', 'AuthenticationController@getNewPassword');
+Route::post('/new_password', 'AuthenticationController@postNewPassword');
 
 /*Route::group(['prefix' => 'admin' , 'middleware' => 'auth.admin'], function(){
 	Route::get('/', 'HomeController@index');
