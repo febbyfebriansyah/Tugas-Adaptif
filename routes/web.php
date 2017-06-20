@@ -60,6 +60,7 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
  	Route::get('/dashboard', 'HomeController@index');
  	Route::get('/profil', 'HomeController@showProfil');
  	Route::get('/status', 'HomeController@status');
+ 	Route::get('/employees', 'HomeController@showEmployees');
  	
  	//-------------------SEBELUM GANTI FRONT-END----------------
  	// Route::get('/home', 'HomeController@index');

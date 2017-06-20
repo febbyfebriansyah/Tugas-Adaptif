@@ -48,13 +48,17 @@
                 <ul class="nav" id="main-menu">
                   <li> <a href="{{ url('/profil') }}"><em class="fa fa-table "></em>Profil Diri</a> </li>
                   <li> <a href="{{ url('/status') }}"><em class="fa fa-table "></em>Status Pengajuan</a> </li>
-
+                  @if(Auth::user()->isAdmin())
+                        <li> <a href="{{ url('/employees') }}"><em class="fa fa-table "></em>List Pegawai</a> </li>
+                  @endif
                 </ul>
-                            </div>
+            </div>
 
         </nav>
         <!-- /. NAV SIDE  -->
          @yield('content')
+    @include('flash::message')
+    @include('sweet::alert')
         </div>
     <div class="footer">
      <!-- /. WRAPPER  -->

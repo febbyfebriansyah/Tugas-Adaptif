@@ -26,12 +26,16 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        return view('pegawai.dashboard');
+    }
+    
+    public function showEmployees(Request $request) 
+    {
         $search = $request->input('search');
         $penduduks = Penduduk::where('noKtp','=',$search)
                         ->orWhere('nama','like','%'.$search.'%')
                         ->paginate(10);
-        // return view('home',['penduduks' => $penduduks, 'search' => $search]);
-        return view('pegawai.dashboard',['penduduks' => $penduduks, 'search' => $search]);
+        return view('pegawai.list_pegawai',['penduduks' => $penduduks, 'search' => $search]);
     }
 
     public function showProfil(){
