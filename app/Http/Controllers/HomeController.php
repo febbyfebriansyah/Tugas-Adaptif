@@ -30,7 +30,16 @@ class HomeController extends Controller
         $penduduks = Penduduk::where('noKtp','=',$search)
                         ->orWhere('nama','like','%'.$search.'%')
                         ->paginate(10);
-        return view('home',['penduduks' => $penduduks, 'search' => $search]);
+        // return view('home',['penduduks' => $penduduks, 'search' => $search]);
+        return view('pegawai.dashboard',['penduduks' => $penduduks, 'search' => $search]);
+    }
+
+    public function showProfil(){
+        return view('pegawai.profil_diri');
+    }
+
+    public function status(){
+        return view('pegawai.status_pengajuan');
     }
 
     public function create(Request $request){

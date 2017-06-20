@@ -54,12 +54,28 @@ Route::group(['prefix' => 'user' , 'middleware' => 'auth.user'], function(){
 	Route::get('/profil','UserController@showProfil');
 });
 
+
  Route::group(['middleware' => 'auth'], function(){
- 	Route::get('/home', 'HomeController@index');
-	Route::post('/home/create','HomeController@create');
-	Route::post('/home/edit', 'HomeController@edit');
-	Route::get('/home/delete/{id}', 'HomeController@delete');
-	Route::get('/home/coba', 'HomeController@download');
-	Route::get('/home/upload/{id}', 'HomeController@upload');
+ 	//-------------------SETELAH GANTI FRONT-END----------------
+ 	Route::get('/dashboard', 'HomeController@index');
+ 	Route::get('/profil', 'HomeController@showProfil');
+ 	Route::get('/status', 'HomeController@status');
+ 	
+ 	//-------------------SEBELUM GANTI FRONT-END----------------
+ 	// Route::get('/home', 'HomeController@index');
+	// Route::post('/home/create','HomeController@create');
+	// Route::post('/home/edit', 'HomeController@edit');
+	// Route::get('/home/delete/{id}', 'HomeController@delete');
+	// Route::get('/home/coba', 'HomeController@download');
+	// Route::get('/home/upload/{id}', 'HomeController@upload');
+	//----------------------------------------------------------
  });
+
+ //-------------ADMIN SETELAH FRONTEND----------------
+ 	Route::get('/daftar-pegawai', function(){
+ 		return view('admin.daftar_pegawai');
+ 	});
+ 	Route::get('/daftar-pengajuan', function(){
+ 		return view('admin.daftar_pengajuan');
+ 	});
 //>>>>>>> d0e1c54fca64b2f9e7fa7f6ba67d78a996967edf
