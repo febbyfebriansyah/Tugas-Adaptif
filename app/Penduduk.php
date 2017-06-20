@@ -13,4 +13,8 @@ class Penduduk extends Model
     public function getJK(){
         return $this->jk == 1 ? "Laki-laki" : "Perempuan";
     }
+    
+    public function user() {
+        return $this->hasOne('App\User', 'noKtp', 'noKtp');
+    }
 }

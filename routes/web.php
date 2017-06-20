@@ -50,9 +50,9 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
 	Route::post('/home/upload','HomeController@upload');
 });*/
 
-Route::group(['prefix' => 'user' , 'middleware' => 'auth.user'], function(){
+/*Route::group(['prefix' => 'user' , 'middleware' => 'auth.user'], function(){
 	Route::get('/profil','UserController@showProfil');
-});
+});*/
 
 
  Route::group(['middleware' => 'auth'], function(){

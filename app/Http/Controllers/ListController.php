@@ -22,7 +22,7 @@ class ListController extends Controller
          'Lord Varys'         => 'Conleth Hill'
        ];
         if(Auth::guard('web')->check()){
-            return redirect('/home');
+            return redirect('/dashboard');
         }else{
             return view('welcome')->withCharacters($characters);
         }

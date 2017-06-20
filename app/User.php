@@ -30,6 +30,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function penduduk() {
+        return $this->belongsTo('App\Penduduk', 'noKtp', 'noKtp');
+    }
+    
     public function getData(){
         // user -> no ktp this.noKtp
         // pendukuk -> no ktp

@@ -13,8 +13,8 @@
           <br>
           <br>
           <br>
-          <font face="Comic sans MS" size="5">Akbar Mardotilah</font><br>
-          <font face="Comic sans MS" size="5">NIP. 19022</font></p>
+          <font face="Comic sans MS" size="5">{{ Auth::user()->name }}</font><br>
+          <font face="Comic sans MS" size="5">NIP. {{ Auth::user()->noKtp }}</font></p>
         </div>
 
       </div>              

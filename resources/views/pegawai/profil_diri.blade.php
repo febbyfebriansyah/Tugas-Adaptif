@@ -9,7 +9,7 @@
                     <label for="noKtp" class="col-md-3 control-label">NIP</label>
 
                       <div class="col-md-6">
-                           <input id="NIP" type="text" class="form-control"  name="NIP" value="" required autofocus readonly>
+                           <input id="NIP" type="text" class="form-control"  name="NIP" value="{{ Auth::user()->noKtp }}" required autofocus readonly>
                       </div>
                   </div>
                   <br>
@@ -18,7 +18,7 @@
                     <label for="nama" class="col-md-3 control-label">Nama</label>
 
                       <div class="col-md-6">
-                           <input id="nama" type="text" class="form-control"  name="nama" value="" required autofocus readonly>
+                           <input id="nama" type="text" class="form-control"  name="nama" value="{{ Auth::user()->name }}" required autofocus readonly>
                       </div>
                   </div>
                   <br>
@@ -27,7 +27,7 @@
                     <label for="alamat" class="col-md-3 control-label">Alamat</label>
 
                       <div class="col-md-6">
-                        <input id="alamat" type="text" class="form-control"  name="alamat" value="" required autofocus readonly>
+                        <input id="alamat" type="text" class="form-control"  name="alamat" value="{{ Auth::user()->penduduk->alamat }}" required autofocus readonly>
                       </div>
                   </div>
                   <br>
@@ -36,7 +36,7 @@
                     <label for="notel" class="col-md-3 control-label">No Telepon</label>
 
                       <div class="col-md-6">
-                        <input id="notel" type="text" class="form-control"  name="notel" value="" required autofocus readonly>
+                        <input id="notel" type="text" class="form-control"  name="notel" value="{{ Auth::user()->penduduk->noTelp }}" required autofocus readonly>
                       </div>
                   </div>
                   <br>
@@ -45,7 +45,7 @@
                     <label for="email" class="col-md-3 control-label">Email</label>
 
                       <div class="col-md-6">
-                        <input id="email" type="text" class="form-control"  name="email" value="" required autofocus readonly>
+                        <input id="email" type="text" class="form-control"  name="email" value="{{ Auth::user()->email }}" required autofocus readonly>
                       </div>
                   </div>
                   <br>
