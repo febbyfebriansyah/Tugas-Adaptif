@@ -42,7 +42,7 @@
                                 <button style="height:35px;width:150px" type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-                                <a class="btn btn-link" href="/forget_password">
+                                <a class="btn btn-link" href="forget_password">
                                     Forgot Your Password?
                                 </a>
                                 <div class="checkbox">
@@ -61,7 +61,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
-                            <center><a href="/account_activation" class="btn btn-primary">ACCOUNT ACTIVATION</a></center>
+                            <center><a href="account_activation" class="btn btn-primary">ACCOUNT ACTIVATION</a></center>
                 </div>
             </div>
         </div>

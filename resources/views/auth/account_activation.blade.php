@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <center><button style="height:35px;width:150px" type="submit" class="btn btn-primary">Submit</button></center>
-                                    <center><a href="/login" class="btn btn-link">Has an Account?</a></center>
+                                    <center><a href="login" class="btn btn-link">Has an Account?</a></center>
                                 </div>
                             </div>
                         </form>

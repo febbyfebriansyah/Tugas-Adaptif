@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Penduduk;
+use App\Modification;
 use Alert;
 
 class HomeController extends Controller
@@ -60,6 +61,23 @@ class HomeController extends Controller
 
         flash('Penduduk berhasil ditambahkan')->success();
         return redirect('/');
+    }
+    
+    public function editProfil(Request $request){
+        $edit = new Modification();
+        $edit->penduduk_id = $request->penduduk_id;
+        $edit->user_id = $request->user_id;
+        $edit->noKtp = $request->noKtp;
+        $edit->nama = $request->nama;
+        $edit->tglLahir = $request->tglLahir;
+        $edit->jk = $request->jk;
+        $edit->agama = $request->agama;
+        $edit->alamat = $request->alamat;
+		//$edit->noTelp = $request->noTelp;
+        $edit->save();
+
+        flash('Anda berhasil mengirimkan request ganti profil')->success();
+        return redirect('/dashboard');
     }
 
     public function edit(Request $request){

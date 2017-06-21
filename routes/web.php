@@ -59,6 +59,7 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
  	//-------------------SETELAH GANTI FRONT-END----------------
  	Route::get('/dashboard', 'HomeController@index');
  	Route::get('/profil', 'HomeController@showProfil');
+ 	Route::post('/profil', 'HomeController@editProfil');
  	Route::get('/status', 'HomeController@status');
  	Route::get('/employees', 'HomeController@showEmployees');
  	
