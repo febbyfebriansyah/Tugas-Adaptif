@@ -10,6 +10,8 @@
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/datatables.min.css') }}" rel="stylesheet">
      <!-- GOOGLE FONTS-->
      @yield('css_addon')
    </head>
@@ -57,8 +59,6 @@
         </nav>
         <!-- /. NAV SIDE  -->
          @yield('content')
-    @include('flash::message')
-    @include('sweet::alert')
         </div>
     <div class="footer">
      <!-- /. WRAPPER  -->
@@ -70,6 +70,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     @yield('js_addon')
     
     @else

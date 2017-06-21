@@ -3,7 +3,7 @@
     <script>       
         $(document).ready(function() {
             $('#table-penduduk-sortable').DataTable({
-                "searching": false
+                "searching": false,
                 "bPaginate": false
             });
         } );
@@ -42,6 +42,8 @@
     </script>
 @endsection
 @section('content')
+        @include('flash::message')
+        @include('sweet::alert')
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row"><div class="col-md-12"> 
