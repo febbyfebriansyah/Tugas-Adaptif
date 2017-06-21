@@ -70,13 +70,13 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
 	// Route::get('/home/coba', 'HomeController@download');
 	// Route::get('/home/upload/{id}', 'HomeController@upload');
 	//----------------------------------------------------------
- });
 
- //-------------ADMIN SETELAH FRONTEND----------------
+	//-------------ADMIN SETELAH FRONTEND----------------
  	Route::get('/daftar-pegawai', function(){
  		return view('admin.daftar_pegawai');
  	});
  	Route::get('/daftar-pengajuan', function(){
  		return view('admin.daftar_pengajuan');
  	});
+ });
 //>>>>>>> d0e1c54fca64b2f9e7fa7f6ba67d78a996967edf

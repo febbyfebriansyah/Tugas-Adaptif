@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Penduduk;
 
 class AuthenticationController extends Controller
 {
@@ -64,12 +65,44 @@ class AuthenticationController extends Controller
     }
 
     public function postActivation(Request $request){
-        if(Auth::guard('web')->attempt(['noKtp' => $request['noKtp'], 'email' => $request['email']])){
-            return redirect('/account_activation');
-        } else {
-            flash("email atau nip yang diinputkan salah")->error();
+        // if(Auth::guard('web')->attempt(['noKtp' => $request['noKtp'], 'email' => $request['email']])){
+        //     return redirect('/account_activation');
+        // } else {
+        //     flash("email atau nip yang diinputkan salah")->error();
+        //     return redirect('/account_activation');
+        // }
+        $password = $request->input('password');
+        $password_confirmation = $request->input('password_confirmation');
+        $email = $request->input('email');
+        $noKtp = $request->input('noKtp');
+
+        if(Penduduk::where('noKtp', $noKtp)->first() || Penduduk::where('email', $email)->first()){
+            if($password == $password_confirmation){
+                if(User::where('noKtp', $noKtp)->first() || User::where('email', $email)->first()){
+                    flash("Proses aktifasi sudah dilakukan")->error();
+                    return redirect('/account_activation');
+                }
+                else{
+                    $user = new User();
+                    $user->noKtp = $noKtp;
+                    $user->name = Penduduk::where('noKtp', $noKtp)->first()->nama;
+                    $user->email = $email;
+                    $user->password = Hash::make($password);
+                    $user->save();
+
+                    return redirect('/login');
+                }
+            }
+            else{
+                flash("Konfirmasi password salah")->error();
+                return redirect('/account_activation');
+            }
+        }
+        else{
+            flash("NIP atau email tidak ditemukan")->error();
             return redirect('/account_activation');
         }
+
     }
 
     public function getForgetPassword(){

@@ -16,8 +16,8 @@
    </head>
 <body>
      
-           
-          
+    @if(Auth::user()->isAdmin() == 1)
+     
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
            <div class="adjust-nav">
@@ -68,6 +68,12 @@
       <!-- CUSTOM SCRIPTS -->
     <script src="{{ asset('js/custom.js') }}"></script>
     @yield('js_addon')
+
+    @else
+      <script type="text/javascript">
+          window.location = "{{ url('/dashboard') }}";
+      </script>
+    @endif
   </div>
 </body>
 </html>

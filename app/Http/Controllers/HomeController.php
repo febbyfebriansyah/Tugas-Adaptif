@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Penduduk;
 use Alert;
 
@@ -26,7 +27,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('pegawai.dashboard');
+        if(Auth::user()->privilege == 99){
+            return view('admin.daftar_pegawai');
+        }else{
+            return view('pegawai.dashboard');
+        }
     }
     
     public function showEmployees(Request $request) 
