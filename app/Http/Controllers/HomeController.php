@@ -28,11 +28,12 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        if(Auth::user()->privilege == 99){
+        /*if(Auth::user()->privilege == 99){
             return view('admin.daftar_pegawai');
         }else{
             return view('pegawai.dashboard');
-        }
+        }*/
+        return view('pegawai.dashboard');
     }
     
     public function showEmployees(Request $request) 
