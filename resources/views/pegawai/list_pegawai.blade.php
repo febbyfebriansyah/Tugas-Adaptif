@@ -74,7 +74,7 @@
                             <thead>
                                 <tr>    
                                     <th class="text-xs-center">#</th>
-                                    <th>No. KTP</th>
+                                    <th>NIP</th>
                                     <th>Nama</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
@@ -88,7 +88,7 @@
                             - $penduduks->perPage();?>
                             @foreach($penduduks as $penduduk)
                                 <tr>
-                                    <td class="text-xs-center">{{ $loop->iteration }}</td>
+                                    <td class="text-xs-center">{{ $loop->iteration + (($page-1) * 10) }}</td>
                                     <td>{{ $penduduk->noKtp }}</td>
                                     <td>{{ $penduduk->nama }}</td>
                                     <td>{{ $penduduk->tglLahir }}</td>
@@ -110,7 +110,7 @@
                                         <button type="button" url="{{ url('/home/delete') }}/{{ $penduduk->id }}"
                                            class="btn btn-danger btn-sm btn-delete">Delete
                                         </button>
-                                        <a href="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
+                                        <button type="button" data-toggle="modal" data-target="#modalUpload" url="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -148,7 +148,7 @@
                     <form class="form" action="{{ url('/home/create') }}" method="post">
                         {{ csrf_field() }}
 
-                        <label>No. KTP</label>
+                        <label>NIP</label>
                         <input class="form-group form-control" type="text" name="noKtp" required>
 
                         <label>Nama</label>
@@ -196,7 +196,7 @@
                         {{ csrf_field() }}
                         <input id="penduduk_id" style="display: none" name="penduduk_id">
 
-                        <label>No. KTP</label>
+                        <label>NIP</label>
                         <input class="form-group form-control" id="noKtp" type="text" name="noKtp" readonly>
 
                         <label>Nama</label>
