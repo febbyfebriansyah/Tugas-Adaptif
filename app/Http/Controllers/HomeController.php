@@ -39,7 +39,8 @@ class HomeController extends Controller
             return view('admin.list_pegawai',['penduduks' => $penduduks, 'search' => $search, 'nips' => $nips]);
         }else{
             return view('pegawai.dashboard');
-        }
+        }*/
+        return view('pegawai.dashboard');
     }
     
     public function detail($id) 

@@ -16,9 +16,6 @@
      @yield('css_addon')
    </head>
 <body>
-     
-    @if(Auth::user()->isAdmin() == 0)
-          
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
            <div class="adjust-nav">
@@ -73,7 +70,7 @@
     <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     @yield('js_addon')
-    
+
     @else
       <script type="text/javascript">
           window.location = "{{ url('/home') }}";
