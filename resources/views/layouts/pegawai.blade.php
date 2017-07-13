@@ -25,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="{{ url('/dashboard') }}" class="navbar-brand" style="font-size:12px;  color:#fff;">
+                    <a href="{{ url('/home') }}" class="navbar-brand" style="font-size:12px;  color:#fff;">
                         <font face="Comic sans MS">Web Kepegawaian Diskominfo Provinsi Jawa Barat</font>
                     </a>
                 </div>
@@ -70,6 +70,12 @@
     <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     @yield('js_addon')
+
+    @else
+      <script type="text/javascript">
+          window.location = "{{ url('/home') }}";
+      </script>
+    @endif
 	</div>
 </body>
 </html>

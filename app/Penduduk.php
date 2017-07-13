@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Penduduk extends Model
 {
     protected $table = 'penduduk';
-    protected $fillable = ['noKtp','nama','tglLahir','tmptLahir','jk','agama','alamat','noTelp'];
+    protected $fillable = ['noKtp','nama','tglLahir','tmptLahir','jk','agama','alamat','noTelp', 'file_url', 'image_url'];
 
     // Method Accepted
     public function getJK(){
