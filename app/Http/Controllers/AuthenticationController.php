@@ -21,10 +21,10 @@ class AuthenticationController extends Controller
 
     public function submitLogin(Request $request){
     	if(Auth::guard('web')->attempt(['email' => $request['email'], 'password' => $request['password']])){
-    		return redirect('/login');
+    		return redirect('/home');
     	} else {
 			flash("email atau password yang diinputkan salah")->error();
-    		return redirect('/login');
+    		return redirect('/');
     	}
     }
 

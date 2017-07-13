@@ -39,4 +39,5 @@
              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->
+         </div>
 @endsection

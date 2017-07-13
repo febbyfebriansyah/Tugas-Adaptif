@@ -3,8 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <center><title>Web Kepegawaian <br>
-    Diskominfo Provinsi Jawa Barat</title></center>
+    <title>Web Kepegawaian Diskominfo Provinsi Jawa Barat</title>
   <!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -12,6 +11,7 @@
         <!-- CUSTOM STYLES-->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
+     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
      @yield('css_addon')
    </head>
 <body>
@@ -27,17 +27,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="{{ url('/dashboard') }}" class="navbar-brand" style="font-size:12px;  color:#fff;">
+                    <a href="{{ url('/home') }}" class="navbar-brand" style="font-size:12px;  color:#fff;">
                         <center><font face="Comic sans MS">Web Kepegawaian <br>
               Diskominfo Provinsi Jawa Barat</font></center>
                     </a>
                 </div>
                  <span class="logout-spn" >
-                  <a href="#" style="font-size:12px;  color:#fff;">LOGOUT</a>  
+                  <a href="logout" style="font-size:12px;  color:#fff;">LOGOUT</a>  
 
                 </span>
                  <span class="logout-spn" >
-                  <a href="{{ url('/dashboard') }}" style="font-size:12px;  color:#fff;"><img src="{{ asset('img/home white.png') }}" width="22" height="22" alt=""/></a>  
+                  <a href="{{ url('/home') }}" style="font-size:12px;  color:#fff;"><img src="{{ asset('img/home white.png') }}" width="22" height="22" alt=""/></a>  
          </span>
            <span class="logout-spn" >
                   <a href="#" style="font-size:12px;  color:#fff;"><img src="{{ asset('img/notif white.png') }}" width="34" height="26" alt=""/></a>  
@@ -48,7 +48,7 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                  <li> <a href="{{ url('/daftar-pegawai') }}"><em class="fa fa-table "></em> Daftar Pegawai</a></li>
+                  <li> <a href="{{ url('/home') }}"><em class="fa fa-table "></em> Daftar Pegawai</a></li>
                   <li> <a href="{{ url('/daftar-pengajuan') }}"><em class="fa fa-table "></em> Daftar Pengajuan</a></li>
                 </ul>
                             </div>
@@ -67,11 +67,17 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('assets/bower/bootstrap-filestyle/src/bootstrap-filestyle.min.js') }}"></script>
+    <!-- Hiding Flash Messages-->
+    <script>
+      $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
     @yield('js_addon')
 
     @else
       <script type="text/javascript">
-          window.location = "{{ url('/dashboard') }}";
+          window.location = "{{ url('/home') }}";
       </script>
     @endif
   </div>

@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="{{ url('/dashboard') }}" class="navbar-brand" style="font-size:12px;  color:#fff;">
+                    <a href="{{ url('/home') }}" class="navbar-brand" style="font-size:12px;  color:#fff;">
                         <font face="Comic sans MS">Web Kepegawaian Diskominfo Provinsi Jawa Barat</font>
                     </a>
                 </div>
@@ -76,7 +76,7 @@
     
     @else
       <script type="text/javascript">
-          window.location = "{{ url('/dashboard') }}";
+          window.location = "{{ url('/home') }}";
       </script>
     @endif
 	</div>

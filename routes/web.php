@@ -10,8 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', function(){
+	return view('test');
+});
 
-Route::get('/', 'ListController@show');
+// Route::get('/', 'ListController@show');
 
 //Route::post('/logout', function(){
 //	Auth::logout();
@@ -19,6 +22,7 @@ Route::get('/', 'ListController@show');
 //});
 
 // Auth::routes();
+Route::get('/', 'AuthenticationController@getLogin');
 Route::get('/login', 'AuthenticationController@getLogin');
 Route::post('/login', 'AuthenticationController@submitLogin');
 Route::get('/register', 'AuthenticationController@getregister');
@@ -57,11 +61,17 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
 
  Route::group(['middleware' => 'auth'], function(){
  	//-------------------SETELAH GANTI FRONT-END----------------
- 	Route::get('/dashboard', 'HomeController@index');
+ 	Route::get('/home', 'HomeController@index');
+ 	Route::post('/home/create','HomeController@create');
+	Route::post('/home/edit', 'HomeController@edit');
+	Route::get('/home/detail/{id}', 'HomeController@detail');
+	Route::get('/home/delete/{id}', 'HomeController@delete');
  	Route::get('/profil', 'HomeController@showProfil');
  	Route::post('/profil', 'HomeController@editProfil');
  	Route::get('/status', 'HomeController@status');
- 	Route::get('/employees', 'HomeController@showEmployees');
+ 	Route::get('/daftar-pengajuan', function(){
+ 		return view('admin.daftar_pengajuan');
+ 	});
  	
  	//-------------------SEBELUM GANTI FRONT-END----------------
  	// Route::get('/home', 'HomeController@index');
@@ -71,13 +81,5 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
 	// Route::get('/home/coba', 'HomeController@download');
 	// Route::get('/home/upload/{id}', 'HomeController@upload');
 	//----------------------------------------------------------
-
-	//-------------ADMIN SETELAH FRONTEND----------------
- 	Route::get('/daftar-pegawai', function(){
- 		return view('admin.daftar_pegawai');
- 	});
- 	Route::get('/daftar-pengajuan', function(){
- 		return view('admin.daftar_pengajuan');
- 	});
  });
 //>>>>>>> d0e1c54fca64b2f9e7fa7f6ba67d78a996967edf
