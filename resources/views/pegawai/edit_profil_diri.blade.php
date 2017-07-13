@@ -1,4 +1,4 @@
-@extends('layouts.pegawai')
+@extends('layouts.user')
 @section('content')
         	<div id="page-wrapper" >
             <div id="page-inner">
@@ -68,7 +68,7 @@
                             <div class="col-md-11 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">Ajukan Perubahan</button>
                                 <button type="cancel" class="btn btn-primary">Cancel</button> 
-					  </div>
+                            </div>
                             
                   </div>
                   

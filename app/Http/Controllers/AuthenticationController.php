@@ -12,7 +12,7 @@ class AuthenticationController extends Controller
 {
     public function getLogin(){
     	if(Auth::guard('web')->check()){
-    		return redirect('/');
+    		return redirect('/home');
     	}
     	else{
     		return view('auth.login');

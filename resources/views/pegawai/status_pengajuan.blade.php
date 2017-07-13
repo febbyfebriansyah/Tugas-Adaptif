@@ -1,4 +1,4 @@
-@extends('layouts.pegawai')
+@extends('layouts.user')
 @section('content')
         <div id="page-wrapper" >
             <div id="page-inner">

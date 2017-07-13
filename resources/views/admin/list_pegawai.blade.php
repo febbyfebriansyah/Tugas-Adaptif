@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 @section('css_addon')
     <style>
         [hidden] {
@@ -10,10 +10,10 @@
     <script>       
         $(document).ready(function() {
             $('#table-penduduk-sortable').DataTable({
-                "searching": false,
-                "bPaginate": false
+                "searching": true,
+                "bPaginate": true
             });
-        } );
+        });
         $('.btn-edit').on('click', function(){
             var penduduk_id = $(this).attr('penduduk');
             var noKtp = $(this).attr('noKtp');
@@ -108,6 +108,7 @@
                             <div class="col-md-9">
                                 <button type="button" class="btn btn-primary btn-tambah" nips="{{ $nips }}">Tambah Penduduk</button>
                             </div>
+                            <!--
                             <div class="col-md-3 col-sm-12 col-xs-12 float-md-right float-sm-none">
                                 <div class="form-group">
                                     <input type="text"
@@ -115,7 +116,7 @@
                                            placeholder="Search by No.KTP/Nama"
                                            name="search" value="{{ $search or "" }}" >
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                   </form>
                   <br>
@@ -131,11 +132,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php $skipped = ($penduduks->currentPage() * $penduduks->perPage())
-                            - $penduduks->perPage();?>
                             @foreach($penduduks as $penduduk)
                                 <tr>
-                                    <td class="text-xs-center">{{ $loop->iteration + (($page-1) * 10) }}</td>
+                                    <td class="text-xs-center">{{ $loop->iteration }}</td>
                                     <td>{{ $penduduk->noKtp }}</td>
                                     <td>{{ $penduduk->nama }}</td>
                                     <td>{{ $penduduk->getJK() }}</td>
@@ -163,7 +162,6 @@
                         </table>
                     </div>
                     <hr>
-                    {{ $penduduks->appends(['search' => $search])->links('vendor.pagination.bootstrap-4') }}
                   <br>
                   
                   </div>
@@ -298,8 +296,8 @@
                         <textarea class="form-group form-control" id="alamat" rows="5" name="alamat" required></textarea>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>

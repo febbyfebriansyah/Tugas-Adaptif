@@ -59,9 +59,10 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
 });*/
 
 
- Route::group(['middleware' => 'auth'], function(){
+ Route::group(['middleware' => 'web'], function(){
  	//-------------------SETELAH GANTI FRONT-END----------------
  	Route::get('/home', 'HomeController@index');
+ 	Route::get('/home/employees', 'HomeController@showEmployees');
  	Route::post('/home/create','HomeController@create');
 	Route::post('/home/edit', 'HomeController@edit');
 	Route::get('/home/detail/{id}', 'HomeController@detail');
@@ -69,9 +70,10 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
  	Route::get('/profil', 'HomeController@showProfil');
  	Route::post('/profil', 'HomeController@editProfil');
  	Route::get('/status', 'HomeController@status');
- 	Route::get('/daftar-pengajuan', function(){
+ 	Route::get('/request_list', 'HomeController@showRequests');
+ 	/*Route::get('/request_list', function(){
  		return view('admin.daftar_pengajuan');
- 	});
+ 	});*/
  	
  	//-------------------SEBELUM GANTI FRONT-END----------------
  	// Route::get('/home', 'HomeController@index');

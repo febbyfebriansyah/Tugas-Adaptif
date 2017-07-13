@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 @section('css_addon')
 <style>
 	.kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {

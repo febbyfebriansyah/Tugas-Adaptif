@@ -1,4 +1,4 @@
-@extends('layouts.pegawai')
+@extends('layouts.user')
 @section('js_addon')
     <script>       
     $('.btn-edit').on('click', function(){
@@ -26,6 +26,11 @@
         	<div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row"><div class="col-md-12"> 
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                    
                   <p align="center" style="font-size: 18px">Profil Diri</p>
                   <div class="">
@@ -131,7 +136,7 @@
                         <input id="penduduk_id" style="display: none" name="penduduk_id">
                         <input id="user_id" style="display: none" name="user_id">
 
-                        <label>No. KTP</label>
+                        <label>NIP</label>
                         <input class="form-group form-control" id="noKtp" type="text" name="noKtp" readonly>
 
                         <label>Nama</label>
@@ -155,7 +160,8 @@
                         <textarea class="form-group form-control" id="alamat" rows="5" name="alamat" required></textarea>
 
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="submit" class="btn btn-primary">Ajukan Perubahan</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button> 
                         </div>
                     </form>
                 </div>

@@ -30,17 +30,34 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        if(Auth::user()->privilege == 99){
-            $search = $request->input('search');
-            $penduduks = Penduduk::where('noKtp','=',$search)
-                            ->orWhere('nama','like','%'.$search.'%')
-                            ->paginate(10);
-            $nips = DB::table('penduduk')->select('noKtp')->get();
-            return view('admin.list_pegawai',['penduduks' => $penduduks, 'search' => $search, 'nips' => $nips]);
+        /*if(Auth::user()->privilege == 99){
+            return view('dashboard');
         }else{
             return view('pegawai.dashboard');
         }*/
-        return view('pegawai.dashboard');
+        return view('dashboard');
+    }
+    
+    public function showEmployees(Request $request) {
+        if(Auth::user()->privilege == 99){
+            $search = $request->input('search');
+            $penduduks = Penduduk::all();
+            $nips = DB::table('penduduk')->select('noKtp')->get();
+            return view('admin.list_pegawai',['penduduks' => $penduduks, 'nips' => $nips]);
+        }else{
+            return view('dashboard');
+        }
+    }
+    
+    public function showRequests(Request $request) {
+        if(Auth::user()->privilege == 99){
+            $search = $request->input('search');
+            $mod_requests = Modification::all();
+            return view('admin.daftar_pengajuan', ['mod_requests' => $mod_requests]);
+            //return view('admin.list_pegawai',['penduduks' => $penduduks, 'search' => $search, 'nips' => $nips]);
+        }else{
+            return view('dashboard');
+        }
     }
     
     public function detail($id) 
@@ -103,7 +120,7 @@ class HomeController extends Controller
         $penduduk->file_url = $path_file;
         $penduduk->save();
 
-        flash('Penduduk berhasil ditambahkan')->success();
+        flash('Penduduk berhasil ditambahkan');
         return back();
     }
     
@@ -118,10 +135,9 @@ class HomeController extends Controller
         $edit->agama = $request->agama;
         $edit->alamat = $request->alamat;
 		//$edit->noTelp = $request->noTelp;
-        $edit->save();
+        //$edit->save();
 
-        flash('Anda berhasil mengirimkan request ganti profil')->success();
-        return redirect('/home');
+        return redirect('/profil')->with('success', 'Anda berhasil mengirimkan request edit profil');
     }
 
     public function edit(Request $request){
@@ -147,8 +163,8 @@ class HomeController extends Controller
         $penduduk->save();
 
         // return response()->json($request);
-        flash('Penduduk berhasil di update')->success();
-        return redirect('/');
+        flash('Penduduk berhasil diupdate');
+        return redirect('/home/employees');
     }
 
 
@@ -165,7 +181,7 @@ class HomeController extends Controller
             File::deleteDirectory('storage/storage/image_upload/'.$penduduk->id);
         }
         Penduduk::destroy($id);
-        flash('Penduduk berhasil dihapus')->success();
+        flash('Penduduk berhasil dihapus');
         return back();
     }
 
@@ -173,19 +189,7 @@ class HomeController extends Controller
         $penduduks = Penduduk::all();
         return response()->download($penduduks);
     }
-    // public function upload(Request $request, $id){
-    //     $file = $request->file('file_url');
-        
-    //     $penduduk = Penduduk::find($id);
-    //     $penduduk->file_url = "";
-    //     $penduduk->save();
-
-    //     $path = $file->storeAs('storage/file_upload'.$penduduk->id, $file->getClientOriginalName(), 'public');
-    //     $penduduk->file_url = $path;
-    //     $penduduk->save();        
-
-    //     return redirect('/home');
-    // }
+    
     public function upload(Request $request){
         $image_url = $request->file('image_url');
         $file_url = $request->file('file_url');
@@ -206,7 +210,7 @@ class HomeController extends Controller
         $penduduk->file_url = $path_file;
         $penduduk->save();
 
-        flash('Upload Berhasil')->success();
+        flash('Upload berhasil');
         return redirect('/');
     }
 
