@@ -51,10 +51,8 @@ class HomeController extends Controller
     
     public function showRequests(Request $request) {
         if(Auth::user()->privilege == 99){
-            $search = $request->input('search');
             $mod_requests = Modification::all();
             return view('admin.daftar_pengajuan', ['mod_requests' => $mod_requests]);
-            //return view('admin.list_pegawai',['penduduks' => $penduduks, 'search' => $search, 'nips' => $nips]);
         }else{
             return view('dashboard');
         }
@@ -83,7 +81,10 @@ class HomeController extends Controller
     }
 
     public function status(){
-        return view('pegawai.status_pengajuan');
+        $user_id = Auth::user()->id;
+        $mod_requests = Modification::where('user_id', $user_id)->get();
+        return view('pegawai.status_pengajuan', ['mod_requests' => $mod_requests]);
+        //return view('admin.list_pegawai',['penduduks' => $penduduks, 'search' => $search, 'nips' => $nips]);
     }
 
     public function create(Request $request){
@@ -196,6 +197,15 @@ class HomeController extends Controller
         $path_img = "";
         $path_file = "";
 
+        
+        if($image_url != null){
+            $path_img = $image_url->storeAs('storage/image_upload/'.$request->input('penduduk_id'), $image_url->getClientOriginalName(), 'public');            
+        }
+        
+        if ($file_url != null){
+            $path_file = $file_url->storeAs('storage/file_upload/'.$request->input('penduduk_id'), $file_url->getClientOriginalName(), 'public'); 
+        }    
+        /*
         if($image_url != null){
             $path_img = $image_url->storeAs('storage/image_upload/'.$request->input('penduduk_id'), $image_url->getClientOriginalName(), 'public');            
         }else if ($file_url != null){
@@ -203,7 +213,7 @@ class HomeController extends Controller
         }else if($image_url != null && $file_url != null){
             $path_img = $image_url->storeAs('storage/image_upload/'.$request->input('penduduk_id'), $image_url->getClientOriginalName(), 'public');
             $path_file = $file_url->storeAs('storage/file_upload/'.$request->input('penduduk_id'), $file_url->getClientOriginalName(), 'public');
-        }
+        }*/
 
         $penduduk = Penduduk::find($request->input('penduduk_id'));
         $penduduk->image_url = $path_img;
