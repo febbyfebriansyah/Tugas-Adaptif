@@ -1,4 +1,21 @@
 @extends('layouts.user')
+@section('css_addon')
+<style>
+    .modal-container{
+        display: flex;
+    }
+    .left{  
+        width: 50%;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+    .right{
+        width: 50%;
+        flex-grow: 0;
+        margin-right: 10px;
+    }
+</style>
+@endsection
 @section('js_addon')
     <script>       
         $(document).ready(function() {
@@ -7,6 +24,7 @@
                 "bPaginate": true
             });
         });
+        
         $('tr#isi').on('dblclick', function() {
             var penduduk_id = $(this).attr('penduduk_id');
             var noKtp = $(this).attr('noKtp');
@@ -15,6 +33,13 @@
             var selectTipe = $(this).attr('jk');
             var agama = $(this).attr('agama');
             var alamat = $(this).attr('alamat');
+            
+            var noKtpLama = $(this).attr('noKtpLama');
+            var namaLama = $(this).attr('namaLama');
+            var tglLahirLama = $(this).attr('tglLahirLama');
+            var selectTipeLama = $(this).attr('jkLama');
+            var agamaLama = $(this).attr('agamaLama');
+            var alamatLama = $(this).attr('alamatLama');
 
             $('input[id="penduduk_id"]').val(penduduk_id);
             $('input[id="noKtp"]').val(noKtp);
@@ -27,9 +52,21 @@
             $('input[id="agama"]').val(agama);
             $('textarea[id="alamat"]').val(alamat);
             
+            $('input[id="noKtpLama"]').val(noKtpLama);
+            $('input[id="namaLama"]').val(namaLama);
+            $('input[id="tglLahirLama"]').val(tglLahirLama);
+            if(selectTipe == 1) {
+                $('input[id="jkLama"]').val("Laki-laki");
+            }
+            else $('input[id="jkLama"]').val("Perempuan");
+            $('input[id="agamaLama"]').val(agamaLama);
+            $('textarea[id="alamatLama"]').val(alamatLama);
+            
             $('#request_detail').modal('show');
         });
-
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
     </script>
 @endsection
 @section('content')
@@ -57,8 +94,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @inject('penduduks', 'App\Penduduk')
                             @foreach($mod_requests as $mod_req)
+                            <?php 
+                                $penduduk = $penduduks::find($mod_req->penduduk_id);
+                            ?>
                                 <tr id="isi"
+                                    data-toggle="tooltip"
+                                    title="Double click untuk melihat detail request"
                                     data-target="#request_detail"
                                     req_id="{{ $mod_req->id }}"
                                     penduduk_id="{{ $mod_req->penduduk_id }}"
@@ -72,12 +115,26 @@
                                     alamat="{{ $mod_req->alamat }}"
                                     no_telp="{{ $mod_req->no_telp }}"
                                     created_at="{{ $mod_req->created_at }}"
+                                    noKtpLama="{{ $penduduk->noKtp }}"
+                                    namaLama="{{ $penduduk->nama }}"
+                                    tmptLahirLama="{{ $penduduk->tmptLahir }}"
+                                    tglLahirLama="{{ $penduduk->tglLahir }}"
+                                    jkLama="{{ $penduduk->jk }}"
+                                    agamaLama="{{ $penduduk->agama }}"
+                                    alamatLama="{{ $penduduk->alamat }}"
+                                    no_telpLama="{{ $penduduk->no_telp }}"
                                 >
 									<td>{{ $loop->iteration }}</td>
                                     <td>{{ $mod_req->created_at }}</td>
                                     <td>{{ $mod_req->updated_at }}</td>
-									<td>STATUS PLACEHOLDER</td>
-                                    <td>REASON PLACEHOLDER</td>
+                                    @if($mod_req->accepted == 1)
+                                        <td>DITERIMA</td>
+                                    @elseif($mod_req->accepted == -1)
+                                        <td>DITOLAK</td>
+                                    @else
+                                        <td>BELUM DIPERIKSA</td>
+                                    @endif
+                                    <td>{{ $mod_req->alasan }}</td>
                                     
                                 </tr>
                             @endforeach
@@ -109,11 +166,38 @@
                     </button>
                     <h4 class="modal-title">Request Detail</h4>
                 </div>
-                <div class="modal-body">
-                    <form class="form" action="{{ url('/home/edit') }}" method="post">
+                <div class="modal-container">
+                    <div class="left">
+                      <p align="center">
+                        <!-- /. ROW  -->   
+                          <font face="Comic sans MS" size="3">Data Lama</font></p>
                         {{ csrf_field() }}
-                        <input id="penduduk_id" style="display: none" name="penduduk_id">
+                        <label>NIP</label>
+                        <input class="form-group form-control" id="noKtpLama" type="text" name="noKtp" readonly>
 
+                        <label>Nama</label>
+                        <input class="form-group form-control" id="namaLama" type="text" name="nama" readonly>
+
+                        <label>Tanggal Lahir</label>
+                        <input class="form-group form-control" id="tglLahirLama" type="text" name="tglLahir" readonly>
+
+                        <label>Jenis Kelamin</label>
+                        <input class="form-group form-control" id="jkLama" type="text" name="jk" readonly>
+
+                        <label>Agama</label>
+                        <input class="form-group form-control" id="agamaLama" type="text" name="agama" readonly>
+
+                        <label>Alamat</label>
+                        <textarea class="form-group form-control" id="alamatLama" rows="5" name="alamat" readonly></textarea>
+                        
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                    <div class="right">
+                      <p align="center">
+                        <!-- /. ROW  -->   
+                          <font face="Comic sans MS" size="3">Data Baru</font></p>
+                        {{ csrf_field() }}
                         <label>NIP</label>
                         <input class="form-group form-control" id="noKtp" type="text" name="noKtp" readonly>
 
@@ -135,7 +219,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -64,6 +64,44 @@
             $('#request_detail').modal('show');
         });
 
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+        
+        $('.btn-decline').on('click', function () {
+            var url_target = $(this).attr('url');
+
+            swal({
+              title: "Tolak request!",
+              text: "Alasan penolakan:",
+              type: "input",
+              showCancelButton: true,
+              closeOnConfirm: false,
+              animation: "slide-from-top",
+              inputPlaceholder: "Alasan"
+            },
+            function(inputValue){
+              if (inputValue === false) return false;
+              
+              if (inputValue === "") {
+                swal.showInputError("Harus ada alasan penolakan!");
+                return false
+              }    
+              swal({
+                  title: "Tolak request ini?",
+                  text: "Anda akan menolak request ini dengan alasan: "+inputValue,
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Tolak request",
+                  closeOnConfirm: false
+                },
+                function(){
+                    window.location.href = url_target+'/'+inputValue;
+                });
+            });                         
+            
+        });
     </script>
 @endsection
 @section('content')
@@ -76,6 +114,7 @@
 					  <font face="Comic sans MS" size="5">Daftar Pengajuan</font></p>
                   <br>
                     @include('flash::message')
+                    @include('layouts.alert_flash')
                     @include('sweet::alert')
                     <div align="right">Double click table untuk melihat detail request</div>
                   </div>
@@ -89,7 +128,6 @@
                                     <th style="text-align: center">No.</th>
                                     <th style="text-align: center">NIP</th>
                                     <th style="text-align: center">Nama</th>
-                                    <th style="text-align: center">Jenis Pengajuan</th>
                                     <th style="text-align: center">Waktu Pengajuan</th>
 									<th style="text-align: center">Terima</th>
                                 </tr>
@@ -101,6 +139,8 @@
                                 $penduduk = $penduduks::find($mod_req->penduduk_id);
                             ?>
                                 <tr id="isi"
+                                    data-toggle="tooltip"
+                                    title="Double click untuk melihat detail request"
                                     data-target="#request_detail"
                                     req_id="{{ $mod_req->id }}"
                                     penduduk_id="{{ $mod_req->penduduk_id }}"
@@ -124,11 +164,10 @@
                                     no_telpLama="{{ $penduduk->no_telp }}"
                                 >
                                     <td>{{ $loop->iteration }}
-									<td>{{ $mod_req->noKtp }}</td>
-                                    <td>{{ $mod_req->nama }}</td>
-                                    <td>Edit</td>
+									<td>{{ $penduduk->noKtp }}</td>
+                                    <td>{{ $penduduk->nama }}</td>
 									<td>{{ $mod_req->created_at }}</td>
-                                    <td><button type="button" class="btn btn-primary">Ya</button> <button type="button" class="btn btn-primary">Tidak</button></td>
+                                    <td><button type="button" url="{{ url('/request_list/ya') }}/{{ $mod_req->id }}" class="btn btn-primary btn-accept">Ya</button> <button type="button" url="{{ url('/request_list/tidak') }}/{{ $mod_req->id }}" class="btn btn-danger btn-decline">Tidak</button></td>
                                     
                                 </tr>
                             @endforeach

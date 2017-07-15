@@ -25,6 +25,8 @@ class CreateModificationsTable extends Migration
             $table->string('agama');
             $table->string('alamat');
 			$table->string('noTelp')->nullable();
+            $table->integer('accepted')->default('0');
+            $table->string('alasan');
             $table->timestamps();
         });
     }

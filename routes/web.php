@@ -71,6 +71,7 @@ Route::post('/new_password', 'AuthenticationController@postNewPassword');
  	Route::post('/profil', 'HomeController@editProfil');
  	Route::get('/status', 'HomeController@status');
  	Route::get('/request_list', 'HomeController@showRequests');
+ 	Route::get('/request_list/tidak/{id}/{alasan}', 'HomeController@declineRequest');
  	/*Route::get('/request_list', function(){
  		return view('admin.daftar_pengajuan');
  	});*/

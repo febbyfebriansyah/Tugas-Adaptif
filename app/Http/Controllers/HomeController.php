@@ -49,9 +49,21 @@ class HomeController extends Controller
         }
     }
     
-    public function showRequests(Request $request) {
+    public function declineRequest($id, $alasan) {
         if(Auth::user()->privilege == 99){
-            $mod_requests = Modification::all();
+            $request = Modification::find($id);
+            $request->accepted = -1;
+            $request->alasan = $alasan;
+            $request->save();
+            return redirect('/request_list')->with('flash_notif.message', ('Request '.$id.' berhasil ditolak karena '.$alasan));
+        }else{
+            return view('dashboard');
+        }
+    }
+    
+    public function showRequests() {
+        if(Auth::user()->privilege == 99){
+            $mod_requests = Modification::where('accepted', 0)->get();
             return view('admin.daftar_pengajuan', ['mod_requests' => $mod_requests]);
         }else{
             return view('dashboard');
@@ -60,15 +72,6 @@ class HomeController extends Controller
     
     public function detail($id) 
     {
-/*
-        $search = $request->input('search');
-        $penduduks = Penduduk::where('noKtp','=',$search)
-                        ->orWhere('nama','like','%'.$search.'%')
-                        ->paginate(10);
-        $page = $request->input('page');
-        if($page == NULL) $page = 1;
-        return view('pegawai.list_pegawai',['penduduks' => $penduduks, 'search' => $search, 'page' => $page]);
-*/
         $penduduk = Penduduk::find($id);
         if($penduduk->image_url != null) $image = "http://localhost:8000/storage/".$penduduk->image_url;
         else $image = asset('img/profile2.png');
