@@ -85,7 +85,7 @@
 		</tr>
 		<tr>
 			<td class="col-sm-3">No. Telp</td>
-			<td class="col-sm-9">: {{ $penduduk->noTelp }}</td>
+			<td class="col-sm-9">: {{ $penduduk->no_telp }}</td>
 		</tr>
 		<tr>
 			<td class="col-sm-3">Berkas Terupload</td>

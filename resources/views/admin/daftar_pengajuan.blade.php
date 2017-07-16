@@ -54,7 +54,7 @@
             $('input[id="noKtpLama"]').val(noKtpLama);
             $('input[id="namaLama"]').val(namaLama);
             $('input[id="tglLahirLama"]').val(tglLahirLama);
-            if(selectTipe == 1) {
+            if(selectTipeLama == 1) {
                 $('input[id="jkLama"]').val("Laki-laki");
             }
             else $('input[id="jkLama"]').val("Perempuan");
@@ -101,6 +101,22 @@
                 });
             });                         
             
+        });
+        
+        
+        $('.btn-accept').on('click', function () {
+            var form_id = $(this).attr('form_id');
+
+            swal({
+                title: "Anda Yakin?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ya, terima request",
+                closeOnConfirm: false
+            }, function(){
+                $(form_id).submit();
+            });
         });
     </script>
 @endsection
@@ -167,7 +183,11 @@
 									<td>{{ $penduduk->noKtp }}</td>
                                     <td>{{ $penduduk->nama }}</td>
 									<td>{{ $mod_req->created_at }}</td>
-                                    <td><button type="button" url="{{ url('/request_list/ya') }}/{{ $mod_req->id }}" class="btn btn-primary btn-accept">Ya</button> <button type="button" url="{{ url('/request_list/tidak') }}/{{ $mod_req->id }}" class="btn btn-danger btn-decline">Tidak</button></td>
+                                    <form style="display: hidden" action="{{ url('/request_list/ya') }}" method="POST" id="data_{{ $mod_req->id }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" id="var_mod_req" name="var_mod_req" value="{{ $mod_req->id }}">
+                                    </form>
+                                    <td><button type="button" form_id="#data_{{ $mod_req->id }}" req="{{ $mod_req->id }}" class="btn btn-primary btn-accept">Ya</button> <button type="button" url="{{ url('/request_list/tidak') }}/{{ $mod_req->id }}" class="btn btn-danger btn-decline">Tidak</button></td>
                                     
                                 </tr>
                             @endforeach

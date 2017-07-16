@@ -61,6 +61,36 @@ class HomeController extends Controller
         }
     }
     
+    public function acceptRequest(Request $request) {
+        if(Auth::user()->privilege == 99){
+            $id = $request->input('var_mod_req');
+            $mod_req = Modification::find($id);
+            $this->editData($mod_req);
+            $mod_req->accepted = 1;
+            $mod_req->save();
+            return redirect('/request_list')->with('flash_notif.message', ('Request '.$mod_req->id.' berhasil diterima.'));
+        }else{
+            return view('dashboard');
+        }
+    }
+    
+    private function editData($mod_req) {
+        if(Auth::user()->privilege == 99){
+            $penduduk = Penduduk::find($mod_req->penduduk_id);
+            $penduduk->noKtp = $mod_req->noKtp;
+            $penduduk->nama = $mod_req->nama;
+            $penduduk->tglLahir = $mod_req->tglLahir;
+            $penduduk->tmptLahir = $mod_req->tmptLahir;
+            $penduduk->jk = $mod_req->jk;
+            $penduduk->agama = $mod_req->agama;
+            $penduduk->alamat = $mod_req->alamat;
+            $penduduk->no_telp = $mod_req->no_telp;
+            $penduduk->save();
+        }else{
+            return view('dashboard');
+        }        
+    }
+    
     public function showRequests() {
         if(Auth::user()->privilege == 99){
             $mod_requests = Modification::where('accepted', 0)->get();
@@ -99,7 +129,7 @@ class HomeController extends Controller
         $penduduk->jk = $request->jk;
         $penduduk->agama = $request->agama;
         $penduduk->alamat = $request->alamat;
-		$penduduk->noTelp = $request->noTelp;
+		$penduduk->no_telp = $request->no_telp;
         $penduduk->save();
 
         $image_url = $request->file('image_url');
@@ -134,12 +164,13 @@ class HomeController extends Controller
         $edit->user_id = $request->user_id;
         $edit->noKtp = $request->noKtp;
         $edit->nama = $request->nama;
+        $edit->tmptLahir = $request->tmptLahir;
         $edit->tglLahir = $request->tglLahir;
         $edit->jk = $request->jk;
         $edit->agama = $request->agama;
         $edit->alamat = $request->alamat;
-		//$edit->noTelp = $request->noTelp;
-        //$edit->save();
+		$edit->no_telp = $request->no_telp;
+        $edit->save();
 
         return redirect('/profil')->with('success', 'Anda berhasil mengirimkan request edit profil');
     }
@@ -153,7 +184,7 @@ class HomeController extends Controller
         $jk = $request->input('jk');
         $agama = $request->input('agama');
         $alamat = $request->input('alamat');
-		$noTelp = $request->input('noTelp');
+		$no_telp = $request->input('no_telp');
 
         $penduduk = Penduduk::find($penduduk_id);
         $penduduk->noKtp = $noKtp;
@@ -163,7 +194,7 @@ class HomeController extends Controller
         $penduduk->jk = $jk;
         $penduduk->agama = $agama;
         $penduduk->alamat = $alamat;
-		$penduduk->noTelp = $noTelp;
+		$penduduk->no_telp = $no_telp;
         $penduduk->save();
 
         // return response()->json($request);

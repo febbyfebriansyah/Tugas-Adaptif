@@ -22,7 +22,7 @@ class Penduduks extends Migration
             $table->integer('jk'); //1=laki-laki, 2=perempuan
             $table->string('agama');
             $table->string('alamat');
-			$table->string('noTelp')->nullable();
+			$table->string('no_telp')->nullable();
             $table->string('file_url')->nullable();
             $table->string('image_url')->nullable();
             $table->timestamps();

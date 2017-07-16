@@ -6,19 +6,23 @@
             var user_id = $(this).attr('user_id');
             var noKtp = $(this).attr('noKtp');
             var nama = $(this).attr('nama');
+            var tmptLahir = $(this).attr('tmptLahir');
             var tglLahir = $(this).attr('tglLahir');
             var selectTipe = $(this).attr('jk');
             var agama = $(this).attr('agama');
             var alamat = $(this).attr('alamat');
+            var no_telp = $(this).attr('no_telp');
 
             $('input[id="penduduk_id"]').val(penduduk_id);
             $('input[id="user_id"]').val(user_id);
             $('input[id="noKtp"]').val(noKtp);
             $('input[id="nama"]').val(nama);
+            $('input[id="tmptLahir"]').val(tmptLahir);
             $('input[id="tglLahir"]').val(tglLahir);
             $('select[id="selectTipe"]').val(selectTipe);
             $('input[id="agama"]').val(agama);
             $('textarea[id="alamat"]').val(alamat);
+            $('input[id="no_telp"]').val(no_telp);
     });
     </script>
 @endsection
@@ -52,6 +56,24 @@
                   <br>
                   <br>
                   <div class="">
+                    <label for="tmptLahir" class="col-md-3 control-label">Tempat Lahir</label>
+
+                      <div class="col-md-6">
+                        <input id="tmptLahir" type="text" class="form-control"  name="tmptLahir" value="{{ Auth::user()->penduduk->tmptLahir }}" required autofocus readonly>
+                      </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="">
+                    <label for="tglLahir" class="col-md-3 control-label">Tanggal Lahir</label>
+
+                      <div class="col-md-6">
+                        <input id="tglLahir" type="text" class="form-control"  name="tglLahir" value="{{ Auth::user()->penduduk->tglLahir }}" required autofocus readonly>
+                      </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="">
                     <label for="alamat" class="col-md-3 control-label">Alamat</label>
 
                       <div class="col-md-6">
@@ -64,7 +86,25 @@
                     <label for="notel" class="col-md-3 control-label">No Telepon</label>
 
                       <div class="col-md-6">
-                        <input id="notel" type="text" class="form-control"  name="notel" value="{{ Auth::user()->penduduk->noTelp }}" required autofocus readonly>
+                        <input id="notel" type="text" class="form-control"  name="notel" value="{{ Auth::user()->penduduk->no_telp }}" required autofocus readonly>
+                      </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="">
+                    <label for="agama" class="col-md-3 control-label">Agama</label>
+
+                      <div class="col-md-6">
+                        <input id="agama" type="text" class="form-control"  name="agama" value="{{ Auth::user()->penduduk->agama }}" required autofocus readonly>
+                      </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="">
+                    <label for="jk" class="col-md-3 control-label">Jenis Kelamin</label>
+
+                      <div class="col-md-6">
+                        <input id="jk" type="text" class="form-control"  name="jk" value="{{ Auth::user()->penduduk->jk == 1? 'Laki-laki': 'Perempuan' }}" required autofocus readonly>
                       </div>
                   </div>
                   <br>
@@ -74,15 +114,6 @@
 
                       <div class="col-md-6">
                         <input id="email" type="text" class="form-control"  name="email" value="{{ Auth::user()->email }}" required autofocus readonly>
-                      </div>
-                  </div>
-                  <br>
-                  <br>
-                  <div class="">
-                    <label for="password" class="col-md-3 control-label">Password</label>
-
-                      <div class="col-md-6">
-                        <input id="password" type="password" class="form-control"  name="password" value="" required autofocus readonly>
                       </div>
                   </div>
                   <br>
@@ -98,10 +129,12 @@
                                                 user_id="{{ Auth::user()->id }}"
                                                 noKtp="{{ Auth::user()->noKtp }}"
                                                 nama="{{ Auth::user()->name }}"
+                                                tmptLahir="{{ Auth::user()->penduduk->tmptLahir }}"
                                                 tglLahir="{{ Auth::user()->penduduk->tglLahir }}"
                                                 agama="{{ Auth::user()->penduduk->agama }}"
                                                 jk="{{ Auth::user()->penduduk->jk }}"
                                                 alamat="{{ Auth::user()->penduduk->alamat }}"
+                                                no_telp="{{ Auth::user()->penduduk->no_telp }}"
                                                 data-target="#modalEdit">Edit
                                 </button>
 					  </div>
@@ -142,6 +175,9 @@
                         <label>Nama</label>
                         <input class="form-group form-control" id="nama" type="text" name="nama" required>
 
+                        <label>Tempat Lahir</label>
+                        <input class="form-group form-control" id="tmptLahir" type="text" name="tmptLahir" required>
+
                         <label>Tanggal Lahir</label>
                         <input class="form-group form-control" id="tglLahir" type="text" name="tglLahir" required>
 
@@ -155,6 +191,9 @@
 
                         <label>Agama</label>
                         <input class="form-group form-control" id="agama" type="text" name="agama" required>
+
+                        <label>No. Telp</label>
+                        <input class="form-group form-control" id="no_telp" type="text" name="no_telp" required>
 
                         <label>Alamat</label>
                         <textarea class="form-group form-control" id="alamat" rows="5" name="alamat" required></textarea>

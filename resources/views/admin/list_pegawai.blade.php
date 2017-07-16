@@ -218,7 +218,7 @@
                         <textarea class="form-group form-control" rows="5" name="alamat" required></textarea>
 
                         <label>No. Telepon/HP</label>
-                        <input class="form-group form-control" type="text" name="noTelp" required>
+                        <input class="form-group form-control" type="text" name="no_telp" required>
 
                         {{-- Testing Upload Button --}}
                         {{--<label>File</label>
