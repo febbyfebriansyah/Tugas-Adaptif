@@ -51,7 +51,6 @@
 	<div id="page-inner">
 		<br>
 		<div class="kv-avatar center-block text-center" style="width:200px">
-		{{-- http://localhost:8000/storage/storage/image_upload/71/tset (copy).png --}}
 			<img class="img-responsive img-thumbnail" src="{{ $image }}">
 		</div>
 		<br>
@@ -65,7 +64,7 @@
 				<td class="col-sm-9">: {{ $penduduk->nama }}</td>
 			</tr>
 			<tr>
-				<td class="col-sm-3">Tempat</td>
+				<td class="col-sm-3">Tempat Lahir</td>
 				<td class="col-sm-9">: {{ $penduduk->tmptLahir }}</td>
 			</tr>
 			<td class="col-sm-3">Tanggal Lahir</td>

@@ -86,10 +86,26 @@
                 // }
             });
         });
-        {{--$('.btn-upload').on('click',function(){
-                            var uploadFile = $('input[id="upload-file"]').val().replace(/C:\\fakepath\\/i, '');
-                            $('#label-file').html(uploadFile);
-                        });--}}
+        
+        $('.btn-upload').on('click', function () {
+            var penduduk_id = $(this).attr('penduduk');
+            $('input[id="penduduk_id_upload"]').val(penduduk_id);
+        });
+        
+        $(document).ready(
+            function(){
+                $('#uploadPic').change(
+                    function(){
+                        if ($(this).val()) {
+                            $('#submitUploadPic').removeAttr('disabled'); 
+                        } 
+                    }
+                );
+                $(".modal").on("hidden.bs.modal", function() {
+                    $("#uploadPic").val("");
+                    $('#submitUploadPic').attr('disabled', 'disabled');
+                });                
+        });
     </script>
 @endsection
 @section('content')
@@ -154,7 +170,7 @@
                                         <button type="button" url="{{ url('/home/delete') }}/{{ $penduduk->id }}"
                                            class="btn btn-danger btn-sm btn-delete">Delete
                                         </button>
-                                        <button type="button" data-toggle="modal" data-target="#modalUpload" url="{{ url('/home/upload') }}/{{ $penduduk->id }}" type="file" class="btn btn-primary btn-sm">Upload</button>
+                                        <button type="button" data-toggle="modal" data-target="#modalUpload" penduduk="{{ $penduduk->id }}" class="btn btn-upload btn-primary btn-sm">Upload</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -220,31 +236,9 @@
                         <label>No. Telepon/HP</label>
                         <input class="form-group form-control" type="text" name="no_telp" required>
 
-                        {{-- Testing Upload Button --}}
-                        {{--<label>File</label>
-                                                                        <div class="form-group">
-                                                                            <label class="btn btn-primary btn-upload">
-                                                                                Upload File <input id="upload-file" type="file" name="file_url" onchange="javascript: document.getElementById('file-upload').value = this.value" hidden>
-                                                                            </label>
-                                                                            <p id="label-file">choose file</p>
-                                                                            <br>
-                                                                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx | *.jpg | *.png)</small>
-                                                                        </div>--}}
-
                         <label>Foto</label>
                         <small class="form-text text-muted">(types : *.jpg | *.png)</small>
                         <input type="file" accept=".jpg, .png, .jpeg" name="image_url" class="filestyle form-group" data-buttonName="btn-info" data-placeholder="Tidak ada file" data-buttonText="Upload Foto" data-iconName="glyphicon glyphicon-user" data-buttonBefore="true">
-
-                        <label>Berkas</label>
-                        <small class="form-text text-muted">(types : *.pdf | *.ppt |*.pptx | *.doc | *.docx | *.jpg | *.png, etc)</small>
-                        <input type="file" name="file_url" class="filestyle form-group" data-buttonName="btn-success" data-placeholder="Tidak ada file" data-buttonText="Upload File" data-iconName="glyphicon glyphicon-file" data-buttonBefore="true">
-                        {{--<label>Upload File</label>
-                                                                         <div class="form-group" style="display: inline;">
-                                                                             <input type="button" style="position: relative; left: -1p"xtr class="btn btn-primary " id="button" value="Upload File">
-                                                                             <input type="file" style="opacity: 0; position: relative; left: -40px" class="form-control-file" name="file_url" onchange="javascript: document.getElementById('fileName').value = this.value" required>
-                                                                             <span><input type="text" id="fileName" readonly></span>
-                                                                             <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx | *.jpg | *.png)</small>
-                                                                         </div>--}} 
 
                         <div class="modal-footer">
                             <hr>
@@ -309,23 +303,26 @@
     <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form class="form" action="{{ url('/home/upload') }}" method="post" enctype="multipart/form-data">
+                <form class="form" id="form_upload" action="{{ url('/home/upload') }}" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Upload Berkas</h4>
+                        <h4 class="modal-title" id="myModalLabel">Upload Foto</h4>
                     </div>
                     <div class="modal-body">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label>Upload File</label>
-                            <input type="file" class="form-control-file" name="file_url" required>
-                            <small class="form-text text-muted">Upload File (types : *.pdf | *.ppt |*.pptx | *.doc | *.docx | *.jpg | *.png)</small>
+                            <label>Upload Foto</label>
+                            <input id="penduduk_id_upload" style="display: none" name="penduduk_id_upload">
+
+                            <input type="file" id="uploadPic" accept=".jpg, .png, .jpeg" name="image_url" class="form-control-file" data-buttonName="btn-info" data-placeholder="Tidak ada file" data-buttonText="Upload Foto" data-iconName="glyphicon glyphicon-user" data-buttonBefore="true">
+
+                            <small class="form-text text-muted">Upload Foto (types : *.jpg | *.png)</small>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" id="submitUploadPic" class="btn btn-primary" disabled>Submit</button>
                     </div>
                 </form>
             </div>

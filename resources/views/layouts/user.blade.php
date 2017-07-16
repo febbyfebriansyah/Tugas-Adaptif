@@ -47,13 +47,13 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                  <li> <a href="{{ url('/profil') }}"><em class="fa fa-table "></em>Profil Diri</a> </li>
+                  <li> <a href="{{ url('/profil') }}"><em class="fa fa-table "></em> Profil Diri</a> </li>
                 @if(Auth::user()->isAdmin())
                   <li> <a href="{{ url('/home/employees') }}"><em class="fa fa-table "></em> Daftar Pegawai</a></li>
                   <li> <a href="{{ url('/request_list') }}"><em class="fa fa-table "></em> Daftar Pengajuan</a></li>
-                  <li> <a href="{{ url('/status') }}"><em class="fa fa-table "></em>History Pengajuan</a> </li>
+                  <li> <a href="{{ url('/status') }}"><em class="fa fa-table "></em> History Pengajuan</a> </li>
                 @else
-                  <li> <a href="{{ url('/status') }}"><em class="fa fa-table "></em>Status Pengajuan</a> </li>
+                  <li> <a href="{{ url('/status') }}"><em class="fa fa-table "></em> Status Pengajuan</a> </li>
                 @endif
                 </ul>
                             </div>

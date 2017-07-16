@@ -103,7 +103,7 @@ class HomeController extends Controller
     public function detail($id) 
     {
         $penduduk = Penduduk::find($id);
-        if($penduduk->image_url != null) $image = "http://localhost:8000/storage/".$penduduk->image_url;
+        if($penduduk->image_url != null) $image = asset('storage').'/'.$penduduk->image_url;
         else $image = asset('img/profile2.png');
         // return response()->json(storage_path($penduduk->image_url));
         return view('admin.detail_pegawai', ['penduduk' => $penduduk, 'image' => $image]);
@@ -149,6 +149,22 @@ class HomeController extends Controller
 
         flash('Penduduk berhasil ditambahkan');
         return back();
+    }
+    
+    public function uploadPic(Request $request) {
+        $id = $request->input('penduduk_id_upload');
+        $penduduk = Penduduk::find($id);
+        $image_url = $request->file('image_url');
+        $path_img = "";
+        
+        if($image_url != null){
+            $path_img = $image_url->storeAs('storage/image_upload/'.$id, $image_url->getClientOriginalName(), 'public');
+        }
+        
+        $penduduk->image_url = $path_img;
+        $penduduk->save();
+        
+        return redirect('/home/employees')->with('flash_notif.message', 'Gambar berhasil diupload untuk '. $penduduk->nama);        
     }
     
     public function editProfil(Request $request){
