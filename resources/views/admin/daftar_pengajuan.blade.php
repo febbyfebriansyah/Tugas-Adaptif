@@ -28,37 +28,45 @@
             var penduduk_id = $(this).attr('penduduk_id');
             var noKtp = $(this).attr('noKtp');
             var nama = $(this).attr('nama');
+            var tmptLahir = $(this).attr('tmptLahir');
             var tglLahir = $(this).attr('tglLahir');
             var selectTipe = $(this).attr('jk');
             var agama = $(this).attr('agama');
+            var no_telp = $(this).attr('no_telp');
             var alamat = $(this).attr('alamat');
             
             var noKtpLama = $(this).attr('noKtpLama');
             var namaLama = $(this).attr('namaLama');
+            var tmptLahirLama = $(this).attr('tmptLahirLama');
             var tglLahirLama = $(this).attr('tglLahirLama');
             var selectTipeLama = $(this).attr('jkLama');
             var agamaLama = $(this).attr('agamaLama');
+            var no_telpLama = $(this).attr('no_telpLama');
             var alamatLama = $(this).attr('alamatLama');
 
             $('input[id="penduduk_id"]').val(penduduk_id);
             $('input[id="noKtp"]').val(noKtp);
             $('input[id="nama"]').val(nama);
+            $('input[id="tmptLahir"]').val(tmptLahir);
             $('input[id="tglLahir"]').val(tglLahir);
             if(selectTipe == 1) {
                 $('input[id="jk"]').val("Laki-laki");
             }
             else $('input[id="jk"]').val("Perempuan");
             $('input[id="agama"]').val(agama);
+            $('input[id="no_telp"]').val(no_telp);
             $('textarea[id="alamat"]').val(alamat);
             
             $('input[id="noKtpLama"]').val(noKtpLama);
             $('input[id="namaLama"]').val(namaLama);
+            $('input[id="tmptLahirLama"]').val(tmptLahirLama);
             $('input[id="tglLahirLama"]').val(tglLahirLama);
-            if(selectTipeLama == 1) {
+            if(selectTipe == 1) {
                 $('input[id="jkLama"]').val("Laki-laki");
             }
             else $('input[id="jkLama"]').val("Perempuan");
             $('input[id="agamaLama"]').val(agamaLama);
+            $('input[id="no_telpLama"]').val(no_telpLama);
             $('textarea[id="alamatLama"]').val(alamatLama);
             
             $('#request_detail').modal('show');
@@ -220,6 +228,9 @@
                         <label>Nama</label>
                         <input class="form-group form-control" id="namaLama" type="text" name="nama" readonly>
 
+                        <label>Tempat Lahir</label>
+                        <input class="form-group form-control" id="tmptLahirLama" type="text" name="tmptLahirLama" readonly>
+
                         <label>Tanggal Lahir</label>
                         <input class="form-group form-control" id="tglLahirLama" type="text" name="tglLahir" readonly>
 
@@ -228,6 +239,9 @@
 
                         <label>Agama</label>
                         <input class="form-group form-control" id="agamaLama" type="text" name="agama" readonly>
+
+                        <label>No. Telp</label>
+                        <input class="form-group form-control" id="no_telpLama" type="text" name="no_telpLama" readonly>
 
                         <label>Alamat</label>
                         <textarea class="form-group form-control" id="alamatLama" rows="5" name="alamat" readonly></textarea>
@@ -246,6 +260,9 @@
                         <label>Nama</label>
                         <input class="form-group form-control" id="nama" type="text" name="nama" readonly>
 
+                        <label>Tempat Lahir</label>
+                        <input class="form-group form-control" id="tmptLahir" type="text" name="tmptLahir" readonly>
+
                         <label>Tanggal Lahir</label>
                         <input class="form-group form-control" id="tglLahir" type="text" name="tglLahir" readonly>
 
@@ -254,6 +271,9 @@
 
                         <label>Agama</label>
                         <input class="form-group form-control" id="agama" type="text" name="agama" readonly>
+
+                        <label>No. Telp</label>
+                        <input class="form-group form-control" id="no_telp" type="text" name="no_telp" readonly>
 
                         <label>Alamat</label>
                         <textarea class="form-group form-control" id="alamat" rows="5" name="alamat" readonly></textarea>
