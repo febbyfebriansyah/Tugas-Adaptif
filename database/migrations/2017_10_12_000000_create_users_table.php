@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('noKtp')->unique();
             $table->foreign('noKtp')->references('noKtp')->on('penduduk')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name');
+            $table->string('name');->references('nama')->on('penduduk')->onDelete('cascade')->onUpdate('cascade');
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('privilege')->default('0');
