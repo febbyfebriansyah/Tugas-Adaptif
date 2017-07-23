@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\Penduduk;
+use App\User;
 use App\Modification;
+use App\Notifications\NewRequest;
+use App\Notifications\RequestReviewed;
 use Alert;
 
 class HomeController extends Controller
@@ -54,6 +57,8 @@ class HomeController extends Controller
             $request = Modification::find($id);
             $request->accepted = -1;
             $request->alasan = $alasan;
+            $users = User::find($request->user_id);
+            \Notification::send($users, (new RequestReviewed(Auth::user()->name, 'DITOLAK')));
             $request->save();
             return redirect('/request_list')->with('flash_notif.message', ('Request '.$id.' berhasil ditolak karena '.$alasan));
         }else{
@@ -67,6 +72,8 @@ class HomeController extends Controller
             $mod_req = Modification::find($id);
             $this->editData($mod_req);
             $mod_req->accepted = 1;
+            $users = User::find($mod_req->user_id);
+            \Notification::send($users, (new RequestReviewed(Auth::user()->name, 'DITERIMA')));
             $mod_req->save();
             return redirect('/request_list')->with('flash_notif.message', ('Request '.$mod_req->id.' berhasil diterima.'));
         }else{
@@ -100,6 +107,16 @@ class HomeController extends Controller
         }
     }
     
+    public function readNotifications() {
+        Auth::user()->unreadNotifications->markAsRead();
+        return redirect('/request_list');
+    }
+    
+    public function readStatusNotif() {
+        Auth::user()->unreadNotifications->markAsRead();
+        return redirect('/status');
+    } 
+    
     public function detail($id) 
     {
         $penduduk = Penduduk::find($id);
@@ -110,7 +127,7 @@ class HomeController extends Controller
     }
 
     public function showProfil(){
-        return view('pegawai.profil_diri');
+        return view('profil_diri');
     }
 
     public function status(){
@@ -179,6 +196,9 @@ class HomeController extends Controller
         $edit->agama = $request->agama;
         $edit->alamat = $request->alamat;
 		$edit->no_telp = $request->no_telp;
+        
+        $users = User::where('privilege', 99)->get();
+        \Notification::send($users, (new NewRequest(Auth::user()->name)));
         $edit->save();
 
         return redirect('/profil')->with('success', 'Anda berhasil mengirimkan request edit profil');

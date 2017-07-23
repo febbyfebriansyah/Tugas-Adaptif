@@ -56,4 +56,13 @@ class User extends Authenticatable
         }
         else return "USER";
     }
+    
+    public function getNotifCount() {
+        return count($this->notifications);
+    }
+    
+    public function getNotifs($number) {
+        return $this->notifications->take($number);
+    }
+    
 }

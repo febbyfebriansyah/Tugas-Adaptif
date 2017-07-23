@@ -14,6 +14,16 @@
      <!-- GOOGLE FONTS-->
      <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('js/datatables.min.css') }}" rel="stylesheet">
+    <style>
+        .dropdown-menu {
+            width: 300px !important;
+        }
+        .dropdown-menu li a {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }        
+    </style>
      @yield('css_addon')
    </head>
 <body>
@@ -38,9 +48,27 @@
                  <span class="logout-spn" >
                   <a href="{{ url('/home') }}" style="font-size:12px;  color:#fff;"><img src="{{ asset('img/home white.png') }}" width="22" height="22" alt=""/></a>  
          </span>
-           <span class="logout-spn" >
-                  <a href="#" style="font-size:12px;  color:#fff;"><img src="{{ asset('img/notif white.png') }}" width="34" height="26" alt=""/></a>  
-         </span>
+         
+               <div class="logout-spn dropdown" >
+                   <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
+                        <img src="{{ asset('img/notif white.png') }}" width="34" height="26" alt="">
+                    </button>
+                      <ul class="dropdown-menu">
+                        @if(Auth::user()->getNotifCount() > 0)
+                            <li class="dropdown-header">{{ Auth::user()->unreadNotifications->count() }} notification belum dibaca.</li>
+                            <li class="divider"></li>
+                            @foreach(Auth::user()->getNotifs(5) as $notif)
+                                @if($notif->unread())
+                                    <li><a href="{{ $notif->data['action'] }}/read">{{ $notif->data['message'] }}</a></li>
+                                @else
+                                    <li class="disabled"><a href="#">{{ $notif->data['message'] }}</a></li>
+                                @endif
+                            @endforeach
+                        @else
+                            <li><a href="#">Tidak ada notification</a></li>
+                        @endif
+                      </ul>
+                </div>
             </div>
         </div>
         <!-- /. NAV TOP  -->

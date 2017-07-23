@@ -118,10 +118,6 @@
                   </div>
                   <br>
                   <br>
-                  <div class="">
-                      	<label for="file" class="col-md-3 control-label">File</label>
-                  </div>
-                  <br>
                   <div class="form-group">
                             <div class="col-md-11 col-md-offset-4">
                                 <button type="button" class="btn btn-primary btn-edit"
