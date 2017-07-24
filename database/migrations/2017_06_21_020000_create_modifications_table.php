@@ -24,7 +24,7 @@ class CreateModificationsTable extends Migration
             $table->integer('jk'); //1=laki-laki, 2=perempuan
             $table->string('agama');
             $table->string('alamat');
-			$table->string('noTelp')->nullable();
+			$table->string('no_telp')->nullable();
             $table->integer('accepted')->default('0');
             $table->string('alasan');
             $table->timestamps();

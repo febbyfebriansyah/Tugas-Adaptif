@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AdminSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,8 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $admin = new App\User();
-        $admin->noKtp == '99';
-        $admin->name = 'admin';
+        $admin->noKtp = '99';
+        $admin->name = 'Admin Admin';
         $admin->email = 'admin@gmail.com';
         $admin->password = Hash::make('admin');
         $admin->privilege = 99;

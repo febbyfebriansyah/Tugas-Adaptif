@@ -20,7 +20,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "Admin";
         $penduduk->alamat = "Jl. Taman Sari No.55, Lb. Siliwangi, Coblong, Kota Bandung, Jawa Barat 40132, Indonesia";
-		$penduduk->noTelp = "0222502898";
+		$penduduk->no_telp = "0222502898";
         $penduduk->save();
         
         $penduduk = new Penduduk();
@@ -31,7 +31,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "islam";
         $penduduk->alamat = "jl. Randusari Raya VII  No.30D";
-		$penduduk->noTelp = "081377881234";
+		$penduduk->no_telp = "081377881234";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -42,7 +42,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 2;
         $penduduk->agama = "Kristen";
         $penduduk->alamat = "jl. Jakarta No.40";
-		$penduduk->noTelp = "085689001290";
+		$penduduk->no_telp = "085689001290";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -53,7 +53,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "islam";
         $penduduk->alamat = "jl. Astana Anyar No.20";
-		$penduduk->noTelp = "081898910923";
+		$penduduk->no_telp = "081898910923";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -64,7 +64,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "Kristen";
         $penduduk->alamat = "jl. Puncak No.92";
-        $penduduk->noTelp = "081829382343";
+        $penduduk->no_telp = "081829382343";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -75,7 +75,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "Islam";
         $penduduk->alamat = "jl. Ahmadyani No.12";
-        $penduduk->noTelp = "082142342343";
+        $penduduk->no_telp = "082142342343";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -86,7 +86,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 2;
         $penduduk->agama = "Hindu";
         $penduduk->alamat = "jl. Malang No.42";
-        $penduduk->noTelp = "082734384738";
+        $penduduk->no_telp = "082734384738";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -97,7 +97,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "Islam";
         $penduduk->alamat = "jl. Bukit Sinai No.16";
-        $penduduk->noTelp = "087363472840";
+        $penduduk->no_telp = "087363472840";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -108,7 +108,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 2;
         $penduduk->agama = "Islam";
         $penduduk->alamat = "jl. Katamso No.30";
-        $penduduk->noTelp = "083264826230";
+        $penduduk->no_telp = "083264826230";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -119,7 +119,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 2;
         $penduduk->agama = "Kristen";
         $penduduk->alamat = "jl. Suryasumantri No.12";
-        $penduduk->noTelp = "089732846294";
+        $penduduk->no_telp = "089732846294";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -130,7 +130,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "Islam";
         $penduduk->alamat = "jl. Padang No.120";
-        $penduduk->noTelp = "083442487868";
+        $penduduk->no_telp = "083442487868";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -141,7 +141,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 1;
         $penduduk->agama = "Islam";
         $penduduk->alamat = "jl. Malioboro No.40C";
-        $penduduk->noTelp = "087652362840";
+        $penduduk->no_telp = "087652362840";
         $penduduk->save();
 
         $penduduk = new Penduduk();
@@ -152,214 +152,7 @@ class PendudukSeed extends Seeder
         $penduduk->jk = 2;
         $penduduk->agama = "Kristen";
         $penduduk->alamat = "jl. Alun-alun No.40";
-        $penduduk->noTelp = "087576576580";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 12;
-        $penduduk->nama = "asdasd";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();       
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 14999;
-        $penduduk->nama = "12 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save(); 
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 1214;
-        $penduduk->nama = "22211";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 314412413;
-        $penduduk->nama = "22224 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 8;
-        $penduduk->nama = "8 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 9;
-        $penduduk->nama = "9 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 10;
-        $penduduk->nama = "10 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 11;
-        $penduduk->nama = "11 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 1255;
-        $penduduk->nama = "12 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 13;
-        $penduduk->nama = "13 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 14;
-        $penduduk->nama = "14 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 15;
-        $penduduk->nama = "15 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 16;
-        $penduduk->nama = "16 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 17;
-        $penduduk->nama = "17 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 18;
-        $penduduk->nama = "18 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 19;
-        $penduduk->nama = "19 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 20;
-        $penduduk->nama = "20 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 21;
-        $penduduk->nama = "21 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 22;
-        $penduduk->nama = "22 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 23;
-        $penduduk->nama = "23 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 24;
-        $penduduk->nama = "24 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 25;
-        $penduduk->nama = "25 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
-        $penduduk->save();
-
-        $penduduk = new Penduduk();
-        $penduduk->noKtp = 26;
-        $penduduk->nama = "26 Gilang";
-        $penduduk->tglLahir = "12-02-1996";
-        $penduduk->jk = 1;
-        $penduduk->agama = "islam";
-        $penduduk->alamat = "jl. Astana Anyar No.20";
+        $penduduk->no_telp = "087576576580";
         $penduduk->save();
     }
 }
