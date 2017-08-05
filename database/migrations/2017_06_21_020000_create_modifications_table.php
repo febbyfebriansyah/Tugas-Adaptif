@@ -26,7 +26,7 @@ class CreateModificationsTable extends Migration
             $table->string('alamat');
 			$table->string('no_telp')->nullable();
             $table->integer('accepted')->default('0');
-            $table->string('alasan');
+            $table->string('alasan')->nullable();
             $table->timestamps();
         });
     }
