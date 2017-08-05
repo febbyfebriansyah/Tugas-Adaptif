@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Penduduk;
 use App\User;
 use App\Modification;
@@ -38,7 +39,17 @@ class HomeController extends Controller
         }else{
             return view('pegawai.dashboard');
         }*/
-        return view('dashboard');
+
+        // if(Auth::user()->privilege == 99){
+        //     $search = $request->input('search');
+        //     $penduduks = Penduduk::where('noKtp','=',$search)
+        //                     ->orWhere('nama','like','%'.$search.'%')
+        //                     ->paginate(10);
+        //     $nips = DB::table('penduduk')->select('noKtp')->get();
+        //     return view('admin.list_pegawai',['penduduks' => $penduduks, 'search' => $search, 'nips' => $nips]);
+        // }else{
+         return view('dashboard');
+        // }
     }
     
     public function showEmployees(Request $request) {
@@ -158,13 +169,13 @@ class HomeController extends Controller
         $path_img = "";
         
         if($image_url != null){
-            $path_img = $image_url->storeAs('storage/image_upload/'.$request->input('penduduk_id'), $image_url->getClientOriginalName(), 'public');            
+            $path_img = $image_url->storeAs('storage/image_upload/'.$penduduk->id, $image_url->getClientOriginalName(), 'public');            
         }
         
         $penduduk->image_url = $path_img;
         $penduduk->save();
 
-        flash('Penduduk berhasil ditambahkan');
+        flash('Penduduk berhasil ditambahkan')->success();
         return back();
     }
     
@@ -226,11 +237,32 @@ class HomeController extends Controller
 		$penduduk->no_telp = $no_telp;
         $penduduk->save();
 
-        // return response()->json($request);
-        flash('Penduduk berhasil diupdate');
-        return redirect('/home/employees');
+        $image_url = $request->file('image_url');
+        $path_img = "";
+        if($image_url != null){
+            File::delete('storage/'.$penduduk->image_url);
+            $path_img = $image_url->storeAs('storage/image_upload/'.$penduduk->id, $image_url->getClientOriginalName(), 'public');
+        }else{
+            $path_img = $penduduk->image_url;
+        }
+        $penduduk->image_url = $path_img;
+        $penduduk->save();
+ 
+        flash('Penduduk berhasil di update')->success();
+        return back();
     }
 
+
+    // public function delete($id){
+    //     $penduduk = Penduduk::find($id);
+    //     $image = $penduduk->image_url;
+    //     if($image != null){
+    //         File::deleteDirectory('storage/storage/image_upload/'.$penduduk->id);
+    //     }
+    //     Penduduk::destroy($id);
+    //     flash('Penduduk berhasil dihapus');
+    //     return back();
+    // }
 
     public function delete($id){
         $penduduk = Penduduk::find($id);
@@ -239,7 +271,7 @@ class HomeController extends Controller
             File::deleteDirectory('storage/storage/image_upload/'.$penduduk->id);
         }
         Penduduk::destroy($id);
-        flash('Penduduk berhasil dihapus');
+        flash('Penduduk berhasil dihapus')->success();
         return back();
     }
 
@@ -248,19 +280,34 @@ class HomeController extends Controller
         return response()->download($penduduks);
     }
     
+    // public function upload(Request $request){
+    //     $image_url = $request->file('image_url');
+    //     $path_img = "";
+        
+    //     if($image_url != null){
+    //         $path_img = $image_url->storeAs('storage/image_upload/'.$request->input('penduduk_id'), $image_url->getClientOriginalName(), 'public');            
+    //     }
+        
+    //     $penduduk = Penduduk::find($request->input('penduduk_id'));
+    //     $penduduk->image_url = $path_img;
+    //     $penduduk->save();
+
+    //     flash('Upload berhasil');
+    //     return redirect('/');
+    // }
     public function upload(Request $request){
         $image_url = $request->file('image_url');
         $path_img = "";
-        
+ 
         if($image_url != null){
             $path_img = $image_url->storeAs('storage/image_upload/'.$request->input('penduduk_id'), $image_url->getClientOriginalName(), 'public');            
         }
-        
+ 
         $penduduk = Penduduk::find($request->input('penduduk_id'));
         $penduduk->image_url = $path_img;
         $penduduk->save();
-
-        flash('Upload berhasil');
+ 
+        flash('Upload Berhasil')->success();
         return redirect('/');
     }
 

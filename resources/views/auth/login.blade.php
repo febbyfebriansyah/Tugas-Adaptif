@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@section('paralax')
+<!-- parralax skyline -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="{{ asset('css/parralax-skyline.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+@endsection
+
+@section('js_addon')
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://rawgithub.com/soulwire/sketch.js/master/js/sketch.min.js'></script>
+<script src="{{ asset('js/parralax-skyline.js') }}"></script>
+@endsection
+
 @section('content')
 <div class="container">
     @include('flash::message')
@@ -61,7 +74,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
-                            <center><a href="account_activation" class="btn btn-primary">ACCOUNT ACTIVATION</a></center>
+                            <center><a href="account_activation" class="btn btn-success">ACCOUNT ACTIVATION</a></center>
                 </div>
             </div>
         </div>

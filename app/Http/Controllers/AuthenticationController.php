@@ -90,6 +90,7 @@ class AuthenticationController extends Controller
                     $user->password = Hash::make($password);
                     $user->save();
 
+                    flash("Silahkan Login")->success();
                     return redirect('/login');
                 }
             }

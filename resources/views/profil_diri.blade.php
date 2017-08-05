@@ -36,7 +36,8 @@
                     </div>
                 @endif
                    
-                  <p align="center" style="font-size: 18px">Profil Diri</p>
+                  <p align="center" style="font-size: 18px"><font face="Comic sans MS" size="5">Profil Diri</font></p>
+                  <br>
                   <div class="">
                     <label for="noKtp" class="col-md-3 control-label">NIP</label>
 

@@ -67,32 +67,33 @@
 				<td class="col-sm-3">Tempat Lahir</td>
 				<td class="col-sm-9">: {{ $penduduk->tmptLahir }}</td>
 			</tr>
-			<td class="col-sm-3">Tanggal Lahir</td>
-			<td class="col-sm-9">: {{ $penduduk->tglLahir }}</td>
-		</tr>
-		<tr>
-			<td class="col-sm-3">Agama</td>
-			<td class="col-sm-9">: {{ $penduduk->agama }}</td>
-		</tr>
-		<tr>
-			<td class="col-sm-3">Jenis Kelamin</td>
-			<td class="col-sm-9">: {{ $penduduk->getJK() }}</td>
-		</tr>
-		<tr>
-			<td class="col-sm-3">Alamat</td>
-			<td class="col-sm-9">: {{ $penduduk->alamat }}</td>
-		</tr>
-		<tr>
-			<td class="col-sm-3">No. Telp</td>
-			<td class="col-sm-9">: {{ $penduduk->no_telp }}</td>
-		</tr>
-		<tr>
-			<td class="col-sm-3">Berkas Terupload</td>
-			<td class="col-sm-9">: {{ $penduduk->file_url or "Belum Upload" }}</td>
-		</tr>
-	</table>
-	<!-- /. PAGE INNER  -->
-</div>
-<!-- /. PAGE WRAPPER  -->
+			<tr>
+				<td class="col-sm-3">Tanggal Lahir</td>
+				<td class="col-sm-9">: {{ $penduduk->tglLahir }}</td>
+			</tr>
+			<tr>
+				<td class="col-sm-3">Agama</td>
+				<td class="col-sm-9">: {{ $penduduk->agama }}</td>
+			</tr>
+			<tr>
+				<td class="col-sm-3">Jenis Kelamin</td>
+				<td class="col-sm-9">: {{ $penduduk->getJK() }}</td>
+			</tr>
+			<tr>
+				<td class="col-sm-3">Alamat</td>
+				<td class="col-sm-9">: {{ $penduduk->alamat }}</td>
+			</tr>
+			<tr>
+				<td class="col-sm-3">No. Telp</td>
+				<td class="col-sm-9">: {{ $penduduk->no_telp }}</td>
+			</tr>
+			{{--<tr>
+										<td class="col-sm-3">Berkas Terupload</td>
+										<td class="col-sm-9">: {{ $penduduk->file_url or "Belum Upload" }}</td>
+									</tr>--}}
+		</table>
+		<!-- /. PAGE INNER  -->
+	</div>
+	<!-- /. PAGE WRAPPER  -->
 </div>
 @endsection

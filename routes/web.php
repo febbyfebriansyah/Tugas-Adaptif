@@ -24,9 +24,9 @@ Route::get('/test', function(){
 // Auth::routes();
 Route::get('/', 'AuthenticationController@getLogin');
 Route::get('/login', 'AuthenticationController@getLogin');
-Route::post('/login', 'AuthenticationController@submitLogin');
+Route::post('/login', ['as' => 'login', 'uses' => 'AuthenticationController@submitLogin']);
 Route::get('/register', 'AuthenticationController@getregister');
-Route::post('/register', 'AuthenticationController@register');
+Route::post('/register', ['as' => 'register', 'uses' => 'AuthenticationController@register']);
 Route::get('/logout', 'AuthenticationController@logout');
 Route::get('/account_activation', 'AuthenticationController@getActivation');
 Route::post('/account_activation', 'AuthenticationController@postActivation');

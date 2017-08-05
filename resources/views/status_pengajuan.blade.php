@@ -84,7 +84,7 @@
                    
                   <p align="center">
                     <!-- /. ROW  -->   
-					  <font face="Comic sans MS" size="5">Status Pengajuan</font></p>
+					  <font face="Comic sans MS" size="5">Status Pengajuan Perubahan</font></p>
                   <br>
                     @include('flash::message')
                     @include('sweet::alert')
